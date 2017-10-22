@@ -1,0 +1,33 @@
+title: Optimisation Apache par compression
+---
+pub_date: 2011-01-24 21:17:30
+---
+author: Adrien
+---
+excerpt: Aujourd&rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à  transférer , la bande passante s&rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données). Pour y arriver, il faut contrôler la présence [&hellip;]
+---
+categories: 
+
+apache
+optimisations
+---
+_slug: /2011/01/24/optimisation-apache-par-compression/
+---
+body: 
+<p>Aujourd&rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à  transférer , la bande passante s&rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).</p>
+<p>Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&rsquo;apache. S&rsquo;ils sont présent, nous n&rsquo;avons qu&rsquo;un peu de configuration à  faire.</p>
+<p>Dans le répertoire conf.d, il faut créé ou(ou modifier) le fichier mod_deflate.conf pour y inclure le contenu suivant:</p>
+<blockquote><p>&lt;Location /&gt;<br />
+# Ajoute un filtre<br />
+SetOutputFilter DEFLATE<br />
+BrowserMatch ^Mozilla/4 gzip-only-text/html<br />
+BrowserMatch ^Mozilla/4\.0[678] no-gzip<br />
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html<br />
+# Ne pas compresser les images<br />
+SetEnvIfNoCase Request_URI \<br />
+\.(?:gif|jpe?g|png)$ no-gzip dont-vary</p>
+<p>Header append Vary User-Agent env=!dont-vary<br />
+&lt;/Location&gt;</p></blockquote>
+<p>Ensuite, il ne reste plus qu&rsquo;à  ajouter la ligne<em>:</em></p>
+<blockquote><p>SetOutputFilter DEFLATE</p></blockquote>
+<p>dans chacuns des vhosts où l&rsquo;on veut activer la compression des pages.</p>

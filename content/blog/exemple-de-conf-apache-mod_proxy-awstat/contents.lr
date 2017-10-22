@@ -1,0 +1,64 @@
+title: exemple de conf apache + mod_proxy + awstat
+---
+pub_date: 2010-12-14 09:24:45
+---
+author: Adrien
+---
+excerpt: RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie « ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/ » env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ [&hellip;]
+---
+categories: 
+
+apache
+---
+_slug: /2010/12/14/exemple-de-conf-apache-mod_proxy-awstat/
+---
+body: 
+<blockquote><p>RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net</p>
+<p>&lt;VirtualHost *:80&gt;<br />
+ServerName www.mon-site.fr<br />
+ProxyRequests Off<br />
+##ProxyPreserveHost Off|On<br />
+#Header add Set-Cookie « ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/ » env=BALANCER_ROUTE_CHANGED<br />
+&lt;Proxy balancer://mycluster&gt;<br />
+BalancerMember http://www1.mon-site.fr/<br />
+##BalancerMember http://192.168.1.xxx:80<br />
+#BalancerMember http:// route=1<br />
+#BalancerMember http:// route=2<br />
+#ProxySet stickysession=ROUTEID<br />
+&lt;/Proxy&gt;<br />
+&lt;Proxy balancer://static&gt;<br />
+BalancerMember http://static.mon-site.fr/<br />
+&lt;/Proxy&gt;<br />
+ProxyPass /images/ balancer://static/images/<br />
+ProxyPassReverse /images/ balancer://static/images/<br />
+ProxyPass /include/ balancer://static/include/<br />
+ProxyPassReverse /include/ balancer://static/include/<br />
+ProxyPass /script/ balancer://static/script/<br />
+ProxyPassReverse /script/ balancer://static/script/<br />
+ProxyPass / balancer://mycluster<br />
+ProxyPassReverse / balancer://mycluster<br />
+&lt;/VirtualHost&gt;</p>
+<p># SSLProxyEngine On<br />
+# ProxyPass /wp-admin !<br />
+# ProxyPass / https://www.site.net/<br />
+# ProxyPassReverse / https://www.site.net/<br />
+# ProxyRequests off<br />
+# ProxyReceiveBufferSize 8192<br />
+# ProxyIOBufferSize 262144</p>
+<p>#<br />
+# Directives to allow use of AWStats as a CGI<br />
+#<br />
+Alias /awstatsclasses « /usr/local/awstats/wwwroot/classes/ »<br />
+Alias /awstatscss « /usr/local/awstats/wwwroot/css/ »<br />
+Alias /awstatsicons « /usr/local/awstats/wwwroot/icon/ »<br />
+ScriptAlias /awstats/ « /usr/local/awstats/wwwroot/cgi-bin/ »<br />
+#<br />
+# This is to permit URL access to scripts/files in AWStats directory.<br />
+#<br />
+&lt;Directory « /usr/local/awstats/wwwroot »&gt;<br />
+Options None<br />
+AllowOverride None<br />
+Order deny,allow<br />
+Deny from all<br />
+Allow from xx.xx.xx.xx<br />
+&lt;/Directory&gt;</p></blockquote>

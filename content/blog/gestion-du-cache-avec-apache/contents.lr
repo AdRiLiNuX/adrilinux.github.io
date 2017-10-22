@@ -1,0 +1,43 @@
+title: Gestion du cache avec Apache
+---
+pub_date: 2011-05-26 20:46:47
+---
+author: Adrien
+---
+excerpt: Après l&rsquo;optimisation d&rsquo;Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d&rsquo;autant le serveur. La configuration du cache passe simplement par [&hellip;]
+---
+categories: 
+
+apache
+optimisations
+---
+_slug: /2011/05/26/gestion-du-cache-avec-apache/
+---
+body: 
+<p>Après l&rsquo;optimisation d&rsquo;Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d&rsquo;autant le serveur.<br />
+La configuration du cache passe simplement par l&rsquo;ajout du bloque suivant dans le fichier httpd.conf:</p>
+<blockquote><p># Turn on Expires and set default to 0<br />
+ExpiresActive On<br />
+ExpiresDefault A0</p>
+<p># Set up caching on media files for 1 year (forever?)<br />
+&lt;FilesMatch « \.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$ »&gt;<br />
+ExpiresDefault A29030400<br />
+Header append Cache-Control « public »<br />
+&lt;/FilesMatch&gt;</p>
+<p># Set up caching on media files for 1 week<br />
+&lt;FilesMatch « \.(gif|jpg|jpeg|png|swf|js|css)$ »&gt;<br />
+ExpiresDefault A604800<br />
+Header append Cache-Control « public »<br />
+&lt;/FilesMatch&gt;</p>
+<p># Set up 2 Hour caching on commonly updated files<br />
+&lt;FilesMatch « \.(xml|txt|html)$ »&gt;<br />
+ExpiresDefault A7200<br />
+Header append Cache-Control « proxy-revalidate »<br />
+&lt;/FilesMatch&gt;</p>
+<p># Force no caching for dynamic files<br />
+&lt;FilesMatch « \.(php|cgi|pl|htm)$ »&gt;<br />
+ExpiresActive Off<br />
+Header set Cache-Control « private, no-cache, no-store, proxy-revalidate, no-transform »<br />
+Header set Pragma « no-cache »<br />
+&lt;/FilesMatch&gt;</p></blockquote>
+<p>Voir aussi http://www.askapache.com/htaccess/speed-up-your-site-with-caching-and-cache-control.html</p>

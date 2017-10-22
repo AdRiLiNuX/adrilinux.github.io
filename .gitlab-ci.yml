@@ -1,11 +1,11 @@
-image: alpine:latest
+image: python:latest
 
 pages:
-  stage: deploy
   script:
-  - echo 'Nothing to do...'
+    - pip install lektor
+    - lektor build --output-path public
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master

@@ -1,0 +1,31 @@
+title: Optimisation de WordPress
+---
+pub_date: 2011-04-08 23:37:16
+---
+author: Adrien
+---
+excerpt: Depuis quelques temps, je me suis occupé de l&rsquo;optimisation de mon wordpress. Pas de modification de code, seulement l&rsquo;installation de plugins et de la configuration. Les plugins que j&rsquo;ai installé sont: Head Cleaner: Head Cleaner permet la minification et la concaténation des CSS et JS. Et il le fait bien W3 Total Cache: Enfin, W3 [&hellip;]
+---
+categories: 
+
+applications-web
+optimisations
+---
+_slug: /2011/04/08/optimisation-de-wordpress/
+---
+body: 
+<p><span style="color: #000000;">Depuis quelques temps, je me suis occupé de l&rsquo;optimisation de mon wordpress. Pas de modification de code, seulement l&rsquo;installation de plugins et de la configuration.</span></p>
+<p><span style="color: #000000;">Les plugins que j&rsquo;ai installé sont:</span></p>
+<ul>
+<li><span style="color: #000000;">Head Cleaner: Head Cleaner permet la minification et la concaténation des CSS et JS. Et il le fait bien </span></li>
+</ul>
+<ul>
+<li><span style="color: #000000;">W3 Total Cache: Enfin, W3 Total Cache permet la mise en cache des pages. Il faut penser à désactiver la partie minification car elle est déjà prise en charge par Head Cleaner et WP-Minifier.<br />
+</span></li>
+</ul>
+<p><span style="color: #000000;">J&rsquo;avais aussi testé Theme Minifier pour mimifier les thémes, mais Head Cleaner prend la minification du thème à la volée. En plus, Theme Minifier casse la traduction du thème.</span></p>
+<p><span style="color: #000000;">Enfin bref, après de nombreux test et pas mal de temps, j&rsquo;obtiens un beau résultat sur les sites comme www.gtmetrix.com. Je vous laisse juger du résultat par vous même.<br />
+</span></p>
+<p style="text-align: center;"><a href="https://www.reslinger.net/wp-content/uploads/2011/04/gtmetrix-final.jpg"><img class="size-medium wp-image-273 aligncenter" title="gtmetrix-final" src="https://www.reslinger.net/wp-content/uploads/2011/04/gtmetrix-final-300x241.jpg" alt="" width="300" height="241" srcset="https://www.reslinger.net/wp-content/uploads/2011/04/gtmetrix-final-300x241.jpg 300w, https://www.reslinger.net/wp-content/uploads/2011/04/gtmetrix-final.jpg 977w" sizes="(max-width: 300px) 85vw, 300px" /></a></p>
+<p><span style="color: #000000;"><br />
+</span></p>
