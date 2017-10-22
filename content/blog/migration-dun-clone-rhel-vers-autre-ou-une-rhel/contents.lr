@@ -1,18 +1,17 @@
-title: Migration d&rsquo;un clone RHEL vers un autre (ou une RHEL)
+title: Migration d'un clone RHEL vers un autre (ou une RHEL)
 ---
-pub_date: 2014-07-21 21:59:10
+pub_date: 2014-07-21
 ---
 author: Adrien
 ---
 excerpt: Bonjour, Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis [&hellip;]
 ---
-categories: 
-
-systeme
+categories: systeme
 ---
 _slug: /2014/07/21/migration-dun-clone-rhel-vers-autre-ou-une-rhel/
 ---
-body: 
+body:
+
 <p style="text-align: justify;">Bonjour,<br />
 Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux. C&rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.</p>
 <p><!--more-->Pour ce faire, j&rsquo;ai utilisé ce <a href="http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/">premier lien</a> et ce <a href="http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5">second lien</a>.</p>

@@ -1,18 +1,17 @@
-title: Installation d&rsquo;un terminal web
+title: Installation d'un terminal web
 ---
-pub_date: 2010-12-19 12:00:24
+pub_date: 2010-12-19
 ---
 author: Adrien
 ---
 excerpt: Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&rsquo;est pas authorisé vers l&rsquo;extérieur pour des raisons de sécurité. Ce terminal n&rsquo;étant qu&rsquo;une page web, il est impossible de faire transiter [&hellip;]
 ---
-categories: 
-
-applications-web
+categories: applications-web
 ---
 _slug: /2010/12/19/installation-dun-terminal-web/
 ---
-body: 
+body:
+
 <p>Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&rsquo;est pas authorisé vers l&rsquo;extérieur pour des raisons de sécurité. Ce terminal n&rsquo;étant qu&rsquo;une page web, il est impossible de faire transiter autre chose que ce qui s&rsquo;affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.</p>
 <p>Pour l&rsquo;installation, il suffit de taper la commande suivante :</p>
 <blockquote><p>yum install Ajaxterm</p></blockquote>
