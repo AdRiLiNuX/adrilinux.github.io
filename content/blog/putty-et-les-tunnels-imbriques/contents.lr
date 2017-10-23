@@ -6,16 +6,15 @@ author: Adrien
 ---
 excerpt: Bonjour, Pour ceux qui n&rsquo;ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis. Dans mon cas, j&rsquo;utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est [&hellip;]
 ---
-categories: 
-
-windows
+categories: windows
 ---
 _slug: /2014/07/21/putty-et-les-tunnels-imbriques/
 ---
-body: 
+body:
+
 <p style="text-align: justify;">Bonjour,</p>
 <p style="text-align: justify;">Pour ceux qui n&rsquo;ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis.</p>
 <p style="text-align: justify;">Dans mon cas, j&rsquo;utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est facile de modifier sont fichier ~/.ssh/config pour créer des connexions ssh  avec rebond de manière transparente. Avec Putty, c&rsquo;est un peu plus délicat, mais une fois que l&rsquo;on a la méthode, ça roule.</p>
 <p style="text-align: justify;"><!--more-->La méthode, c&rsquo;est de définir l&rsquo;hôte intermédiaire dans la page proxy avec les informations qui vont bien. Pour « proxy command », un copie/colle de ce qui suit devrait suffir:</p>
 <blockquote><p>plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n</p></blockquote>
-<p style="text-align: center;"><a href="https://www.reslinger.net/2014/07/21/putty-et-les-tunnels-imbriques/putty_confproxy/" rel="attachment wp-att-1633"><img class="aligncenter size-full wp-image-1633" title="Putty_confproxy" src="https://www.reslinger.net/wp-content/uploads/2014/07/Putty_confproxy.png" alt="Putty_confproxy" width="456" height="439" srcset="https://www.reslinger.net/wp-content/uploads/2014/07/Putty_confproxy.png 456w, https://www.reslinger.net/wp-content/uploads/2014/07/Putty_confproxy-300x288.png 300w" sizes="(max-width: 456px) 85vw, 456px" /></a></p>
+<p style="text-align: center;">![Putty_confproxy](Putty_confproxy.png)</p>

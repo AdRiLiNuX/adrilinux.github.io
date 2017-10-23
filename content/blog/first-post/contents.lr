@@ -1,9 +1,11 @@
-title: Hello Website
+title: Hello Website powered by lektor
 ---
 pub_date: 2017-10-22
 ---
-author: Adrien Reslinger
+author: Adrien
 ---
 body:
 
-This is an example blog post.  Not much here but that's not the point :)
+<p style="text-align: justify;">Bonjour tout le monde,</p>
+<p style="text-align: justify;">Vous l'aurez peut être tous remarqué, le site à changé de tête. En fait, Je n'utilise plus [Wordpress](https://wordpress.org/) comme moteur de blog bien qu'il est supporté mon site durant les 7 dernières années sur un serveur dédié. Évolution oblige, je suis passé sur [lektor](https://www.getlektor.com/), un générateur de site static basé sur python, et au déploiement automatique. Les anciens articles publiés sont réimportés, le déploiement automatique est opérationnel, le thème est encore à revoir.</p>
+<p style="text-align: justify;">Il y aura donc encore des changements sur le site dans les prochains jours.</p>
