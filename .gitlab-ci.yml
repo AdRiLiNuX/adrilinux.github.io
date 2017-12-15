@@ -2,7 +2,7 @@ image: python:latest
 
 pages:
   script:
-    - pip install lektor
+    - pip install lektor pymarkdown
     - lektor build --output-path public
   artifacts:
     paths:
