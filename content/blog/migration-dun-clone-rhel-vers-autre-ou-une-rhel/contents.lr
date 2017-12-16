@@ -12,14 +12,14 @@ _slug: /2014/07/21/migration-dun-clone-rhel-vers-autre-ou-une-rhel/
 ---
 body:
 
-<p style="text-align: justify;">Bonjour,<br />
-Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux. C&rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.</p>
-<p><!--more-->Pour ce faire, j&rsquo;ai utilisé ce [premier lien](http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/) et ce [second lien](http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5).</p>
-<p>Voici pour info ce que j&rsquo;ai tapé:</p>
-<blockquote><p>wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}</p>
-<p>rpm -e &#8211;nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)</p>
-<p>rpm -ivh *</p>
-<p>yum clean all &amp;&amp; yum reinstall $(rpm -qa &#8211;qf « %{NAME} %{VENDOR}\n » | egrep &lsquo;(ClearFoundation|Red Hat, Inc.)&rsquo; | cut -d&rsquo; &lsquo; -f1)</p>
-<p>yum update</p>
-<p>yum clean all &amp;&amp; yum &#8211;releasever=6x update</p></blockquote>
-<p>&nbsp;</p>
+Bonjour,
+Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux. C&rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.
+Pour ce faire, j&rsquo;ai utilisé ce [premier lien](http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/) et ce [second lien](http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5).
+Voici pour info ce que j&rsquo;ai tapé:
+	wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}
+	rpm -e &#8211;nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)
+	rpm -ivh *
+	yum clean all &amp;&amp; yum reinstall $(rpm -qa &#8211;qf « %{NAME} %{VENDOR}\n » | egrep &lsquo;(ClearFoundation|Red Hat, Inc.)&rsquo; | cut -d&rsquo; &lsquo; -f1)
+	yum update
+	yum clean all &amp;&amp; yum &#8211;releasever=6x update
+&nbsp;
