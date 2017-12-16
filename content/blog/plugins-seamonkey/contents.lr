@@ -4,7 +4,7 @@ pub_date: 2011-10-16
 ---
 author: Adrien
 ---
-excerpt: Bonjour, Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d&rsquo;apporter de nouvelles fonctionnalitées plus rapidement, ça pose d&rsquo;autre problème notament au niveau des extentions. Par exemple la google bare. Pour que cette bare fonctionne toujours sur mon navigateur, [&hellip;]
+excerpt: Bonjour, Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d'apporter de nouvelles fonctionnalitées plus rapidement, ça pose d'autre problème notament au niveau des extentions. Par exemple la google bare. Pour que cette bare fonctionne toujours sur mon navigateur, [&hellip;]
 ---
 categories: 
 
@@ -13,8 +13,11 @@ non-classe
 _slug: /2011/10/16/plugins-seamonkey/
 ---
 body: 
-<p>Bonjour,</p>
-<p>Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d&rsquo;apporter de nouvelles fonctionnalitées plus rapidement, ça pose d&rsquo;autre problème notament au niveau des extentions.</p>
-<p>Par exemple la google bare.</p>
-<p>Pour que cette bare fonctionne toujours sur mon navigateur, je dézipe le fichier {6b6601f1-361e-4b9f-bb6d-f8305000e4f6}.xpi présent dans le répertoire extensions et modifie le champ « maxVersion » dans la section Seamonkey du fichier install.rdf. Ensuite, il suffit de refaire le zip et de relancer le navigateur et tout devrait être bon.</p>
-<p>Pour toute extention, une simple recherche texte dans le fichier extensions.rdf vous permettra de retrouver le nom du fichier .xpi ou du répertoire contenant l&rsquo;extention. La procédure ensuite reste la même.</p>
+Bonjour,Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d'apporter de nouvelles fonctionnalitées plus rapidement, ça pose d'autre problème notament au niveau des extentions.
+
+Par exemple la google bare.
+
+Pour que cette bare fonctionne toujours sur mon navigateur, je dézipe le fichier {6b6601f1-361e-4b9f-bb6d-f8305000e4f6}.xpi présent dans le répertoire extensions et modifie le champ "maxVersion" dans la section Seamonkey du fichier install.rdf. Ensuite, il suffit de refaire le zip et de relancer le navigateur et tout devrait être bon.
+
+Pour toute extention, une simple recherche texte dans le fichier extensions.rdf vous permettra de retrouver le nom du fichier .xpi ou du répertoire contenant l'extention. La procédure ensuite reste la même.
+

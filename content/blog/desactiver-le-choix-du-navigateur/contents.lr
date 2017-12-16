@@ -4,7 +4,7 @@ pub_date: 2014-08-17
 ---
 author: Adrien
 ---
-excerpt: Bonjour tout le monde. Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&rsquo;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&rsquo;administration qui ne démarre qu&rsquo;une fois par an, installer un autre navigateur qui sera [&hellip;]
+excerpt: Bonjour tout le monde. Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu'à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d'administration qui ne démarre qu'une fois par an, installer un autre navigateur qui sera [&hellip;]
 ---
 categories: 
 
@@ -14,7 +14,11 @@ windows
 _slug: /2014/08/17/desactiver-le-choix-du-navigateur/
 ---
 body: 
-<p style="text-align: justify;">Bonjour tout le monde.</p>
-<p style="text-align: justify;">Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&rsquo;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&rsquo;administration qui ne démarre qu&rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.</p>
-<p style="text-align: justify;">Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans « HKEY_LOCAL_MACHINE\Software\BrowserChoice » du nom de « Enable ». Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.</p>
-<p>Ensuite, la machine démarre plus vite 🙂</p>
+Bonjour tout le monde.
+
+Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu'à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d'administration qui ne démarre qu'une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n'est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.
+
+Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans "HKEY_LOCAL_MACHINE\Software\BrowserChoice" du nom de "Enable". Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.
+
+Ensuite, la machine démarre plus vite 🙂
+

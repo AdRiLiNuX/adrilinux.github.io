@@ -4,7 +4,7 @@ pub_date: 2010-12-19
 ---
 author: Adrien
 ---
-excerpt: Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&rsquo;est pas authorisé vers l&rsquo;extérieur pour des raisons de sécurité. Ce terminal n&rsquo;étant qu&rsquo;une page web, il est impossible de faire transiter [&hellip;]
+excerpt: Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n'est pas authorisé vers l'extérieur pour des raisons de sécurité. Ce terminal n'étant qu'une page web, il est impossible de faire transiter [&hellip;]
 ---
 categories: applications-web
 ---
@@ -12,14 +12,20 @@ _slug: /2010/12/19/installation-dun-terminal-web/
 ---
 body:
 
-<p>Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&rsquo;est pas authorisé vers l&rsquo;extérieur pour des raisons de sécurité. Ce terminal n&rsquo;étant qu&rsquo;une page web, il est impossible de faire transiter autre chose que ce qui s&rsquo;affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.</p>
-<p>Pour l&rsquo;installation, il suffit de taper la commande suivante :</p>
-<blockquote><p>yum install Ajaxterm</p></blockquote>
-<p>Pis pour l&rsquo;activer,</p>
-<blockquote><p>service ajaxterm start</p>
-<p>chkconfig ajaxterm on</p></blockquote>
-<p>Enfin, pour pouvoir y accéder, il faut rajouter ces lignes dans le vhost d&rsquo;apache:</p>
-<blockquote><p>ProxyPass /ajaxterm/              http://localhost:8022/<br />
-ProxyPassReverse            /ajaxterm/ http://localhost:8022/</p></blockquote>
-<p>Si le titre ne vous plait pas, vous pouvez le modifier via un sed par exemple dans le fichier /usr/share/ajaxterm/ajaxterm.html :</p>
-<blockquote><p>sed &lsquo;s|\(&lt;title&gt;\)Ajaxterm\(&lt;/title&gt;\)|\1Nouveau Titre\2|&rsquo; -i /usr/share/ajaxterm/ajaxterm.html</p></blockquote>
+Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n'est pas authorisé vers l'extérieur pour des raisons de sécurité. Ce terminal n'étant qu'une page web, il est impossible de faire transiter autre chose que ce qui s'affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.
+
+Pour l'installation, il suffit de taper la commande suivante :
+
+    yum install Ajaxterm
+Puis pour l'activer,
+
+    service ajaxterm start
+    chkconfig ajaxterm on
+Enfin, pour pouvoir y accéder, il faut rajouter ces lignes dans le vhost d'apache:
+
+    ProxyPass /ajaxterm/	http://localhost:8022/
+    ProxyPassReverse	/ajaxterm/ http://localhost:8022/
+Si le titre ne vous plait pas, vous pouvez le modifier via un sed par exemple dans le fichier /usr/share/ajaxterm/ajaxterm.html :
+
+    sed 's|\(<title>\)Ajaxterm\(</title>\)|\1Nouveau Titre\2|' -i /usr/share/ajaxterm/ajaxterm.html
+

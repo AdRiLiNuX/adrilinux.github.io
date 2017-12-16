@@ -12,13 +12,20 @@ windows
 _slug: /2015/07/01/windows-bios-utc/
 ---
 body: 
-<p>Bonjour,</p>
-<p>J'utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d'heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c'est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d'une horloge BIOS en UTC.</p>
-<p>Voici les différentes étapes :</p>
-<p>Configuration de la base de regisre pour avoir l'heure bios en utc :</p>
-<blockquote><p>reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1</p></blockquote>
-<p>Synchroniser l'heure :</p>
-<blockquote><p>w32tm /config /update</p></blockquote>
-<p>Désactiver le service Windows Time service qui écrit l'heure à chaque arrêt du système sans regarder le registre :Désactiver le service Windows Time service qui écrit l'heure à chaque arrêt du système sans regarder le registre :</p>
-<blockquote><p>sc config w32time start= disabled</p></blockquote>
-<p>Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.</p>
+Bonjour,
+
+J'utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d'heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c'est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d'une horloge BIOS en UTC.
+
+Voici les différentes étapes :
+
+Configuration de la base de regisre pour avoir l'heure bios en utc :
+
+    reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
+Synchroniser l'heure :
+
+    w32tm /config /update
+Désactiver le service Windows Time service qui écrit l'heure à chaque arrêt du système sans regarder le registre :
+
+    sc config w32time start= disabled
+Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.
+

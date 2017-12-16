@@ -4,7 +4,7 @@ pub_date: 2014-12-03
 ---
 author: Adrien
 ---
-excerpt: Bonjour, Aujourd&rsquo;hui, rien de passionnant, juste un petit mémo pour l&rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir. Pour entrer : virsh console VM Pour sortir Ctrl + ] Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.
+excerpt: Bonjour, Aujourd'hui, rien de passionnant, juste un petit mémo pour l'entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir. Pour entrer : virsh console VM Pour sortir Ctrl + ] Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.
 ---
 categories: 
 
@@ -14,10 +14,15 @@ virtualisation
 _slug: /2014/12/03/console-virsh/
 ---
 body: 
-<p>Bonjour,</p>
-<p>Aujourd&rsquo;hui, rien de passionnant, juste un petit mémo pour l&rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.</p>
-<p>Pour entrer :</p>
-<blockquote><p>virsh console VM</p></blockquote>
-<p>Pour sortir</p>
-<blockquote><p>Ctrl + ]</p></blockquote>
-<p>Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.</p>
+Bonjour,
+
+Aujourd'hui, rien de passionnant, juste un petit mémo pour l'entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.
+
+Pour entrer :
+
+    virsh console VM
+Pour sortir
+
+    Ctrl + ]
+Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.
+
