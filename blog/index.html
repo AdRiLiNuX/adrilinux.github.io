@@ -1,0 +1,309 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../static/style.css">
+<title> — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../">Accueil</a></li>
+        
+          <li class="active"><a href="../blog/">Blog</a></li>
+        
+          <li><a href="../projects/">Projets</a></li>
+        
+          <li><a href="../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2018/2/6/chiffrer-homedir-ubuntu/">Chiffrer son homedir sous Ubuntu</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2018-02-06
+  </p>
+  <p>Bonjour,</p>
+<p>J'avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l'avais pas fait durant l'installation du système. Pourquoi ? Simplement par ce que j'installe des systèmes sur disque chiffré. Je pensais alors que c'était suffisant.
+La machine que j'ai voulu modifier est en fait une machine potentiellement partagée aujourd'hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).</p>
+<p>Pour l'installation des paquets :</p>
+<pre><code>apt install ecryptfs-utils libpam-mount
+</code></pre>
+<p>Pour l'encryption du homedir :</p>
+<pre><code>ecryptfs-migrate-home -u $MON_USER
+</code></pre>
+<p>Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :</p>
+<pre><code>ecryptfs-migrate-home -u mon_user
+</code></pre>
+<p>L'opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .</p>
+<p>Source utilisée: <a href="https://doc.ubuntu-fr.org/ecryptfs">ecryptfs sur ubuntu-fr</a></p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2017/10/22/first-post/">Hello Website powered by lektor</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2017-10-22
+  </p>
+  <p>Bonjour tout le monde,</p>
+<p>Vous l'aurez peut être tous remarqué, le site à changé de tête. En fait, Je n'utilise plus <a href="https://wordpress.org">Wordpress</a> comme moteur de blog bien qu'il est supporté mon site durant les 7 dernières années sur un serveur dédié. Évolution oblige, je suis passé sur <a href="https://www.getlektor.com">lektor</a>, un générateur de site static basé sur python, et au déploiement automatique. Les anciens articles publiés sont réimportés, le déploiement automatique est opérationnel, le thème est encore à revoir.</p>
+<p>Il y aura donc encore des changements sur le site dans les prochains jours.</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2015/07/01/windows-bios-utc/">Windows en dual boot</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2015-07-01
+  </p>
+  <p>Bonjour,</p>
+<p>J'utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d'heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c'est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d'une horloge BIOS en UTC.</p>
+<p>Voici les différentes étapes :</p>
+<p>Configuration de la base de regisre pour avoir l'heure bios en utc :</p>
+<pre><code>reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
+</code></pre>
+<p>Synchroniser l'heure :</p>
+<pre><code>w32tm /config /update
+</code></pre>
+<p>Désactiver le service Windows Time service qui écrit l'heure à chaque arrêt du système sans regarder le registre :</p>
+<pre><code>sc config w32time start= disabled
+</code></pre>
+<p>Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2014/12/03/console-virsh/">Console virsh</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-12-03
+  </p>
+  <p>Bonjour,</p>
+<p>Aujourd'hui, rien de passionnant, juste un petit mémo pour l'entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.</p>
+<p>Pour entrer :</p>
+<pre><code>virsh console VM
+</code></pre>
+<p>Pour sortir</p>
+<pre><code>Ctrl + ]
+</code></pre>
+<p>Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2014/08/17/desactiver-le-choix-du-navigateur/">Désactiver le choix du navigateur</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-08-17
+  </p>
+  <p>Bonjour tout le monde.</p>
+<p>Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu'à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d'administration qui ne démarre qu'une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n'est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.</p>
+<p>Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans "HKEY_LOCAL_MACHINE\Software\BrowserChoice" du nom de "Enable". Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.</p>
+<p>Ensuite, la machine démarre plus vite 🙂</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2014/07/21/migration-dun-clone-rhel-vers-autre-ou-une-rhel/">Migration d&#39;un clone RHEL vers un autre (ou une RHEL)</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-07-21
+  </p>
+  <p>Bonjour,</p>
+<p>Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d'autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.</p>
+<p>C'est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n'a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.</p>
+<p>Pour ce faire, j'ai utilisé ce <a href="http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/">premier lien</a> et ce <a href="http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5">second lien</a>.</p>
+<p>Voici pour info ce que j'ai tapé:</p>
+<pre><code>wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}
+rpm -e --nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)
+rpm -ivh *
+yum clean all &amp;&amp; yum reinstall $(rpm -qa --qf "%{NAME} %{VENDOR}\n" | egrep '(ClearFoundation|Red Hat, Inc.)' | cut -d\  -f1)
+yum update
+yum clean all &amp;&amp; yum --releasever=6x update
+</code></pre>
+<p>&nbsp;</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2014/07/21/putty-et-les-tunnels-imbriques/">Putty et les tunnels imbriqués</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-07-21
+  </p>
+  <p>Bonjour,</p>
+<p>Pour ceux qui n'ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis.</p>
+<p>Dans mon cas, j'utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est facile de modifier sont fichier ~/.ssh/config pour créer des connexions ssh  avec rebond de manière transparente. Avec Putty, c'est un peu plus délicat, mais une fois que l'on a la méthode, ça roule.</p>
+<p>La méthode, c'est de définir l'hôte intermédiaire dans la page proxy avec les informations qui vont bien. Pour "proxy command", un copie/colle de ce qui suit devrait suffir:</p>
+<pre><code>plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n
+</code></pre>
+<p><img src="../blog/2014/07/21/putty-et-les-tunnels-imbriques/Putty_confproxy.png" alt="Putty_confproxy"></p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2012/06/28/openvz-sur-une-redhat-6/">OpenVZ sur une RedHat 6</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2012-06-28
+  </p>
+  <p>Bonjour tout le monde,</p>
+<p>Aujourd'hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s'agit pas exactement de virtualisation mais plutôt de conteneur. L'avantage, c'est que ça fonctionne sur des machines qui n'ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu'est un conteneur (dans ce contexte), je vais faire un petit rappel.</p>
+<p>Le conteneur permet de faire des machines virtuelles, mais celles ci n'auront pas un espace complet réservé comme sur d'autre système de virtualisation car pour le système hôte et les invités, il s'agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d'étape entre l'application d'une machine virtuelle et le matériel (disque, mémoire, cpu, ...). En contre parti, comme on a qu'un seul noyau, les invités sont donc du même type que l'hôte (Linux -- Linux, Windows -- Windows).</p>
+<p>Ici, nous ne verrons que la parti Linux. Le projet que nous allons utiliser s’appelle OpenVZ. Bien sûr, il y en a d'autre qui existe.</p>
+<p>Nôtre système hôte sera un clone d'une RedHat 6 (Scientific Linux 6).</p>
+<p>L'installation sur ce genre de système est vraiment très simple.</p>
+<p>Récupérez en premier la définition du dépôt :</p>
+<pre><code>cd /etc/yum.repos.d &amp;&amp; wget http://download.openvz.org/openvz.repo &amp;&amp; \
+rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
+</code></pre>
+<p>Ensuite, modifier le fichier openvz.repo pour désactiver le dépot redhat 5 et activer celui de la redhat 6.</p>
+<p>Enfin, installez le kernel:</p>
+<pre><code>yum install vzkernel-firmware vzkernel vzctl vzquota
+</code></pre>
+<p>Pour que OpenVZ soit fonctionnel, il reste juste un peu de configuration. Désactiver SELinux (/etc/selinux/config) et mettez dans le fichier /etc/sysctl.conf ce qui suit:</p>
+<pre><code># On Hardware Node we generally need  
+# packet forwarding enabled and proxy arp disabled  
+net.ipv4.ip_forward = 1  
+net.ipv6.conf.default.forwarding = 1  
+net.ipv6.conf.all.forwarding = 1  
+net.ipv4.conf.default.proxy_arp = 0 
+
+# Enables source route verification  
+net.ipv4.conf.all.rp_filter = 1 
+
+# Enables the magic-sysrq key  
+kernel.sysrq = 1 
+
+# We do not want all our interfaces to send redirects  
+net.ipv4.conf.default.send_redirects = 1  
+net.ipv4.conf.all.send_redirects = 0
+</code></pre>
+<p>Après un redémarrage sur le nouveau noyau, vous voilà prêt à créer et démarrer vos machines virtuelles.</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2011/10/16/plugins-seamonkey/">Plugins et Seamonkey</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2011-10-16
+  </p>
+  <p>Bonjour,Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d'apporter de nouvelles fonctionnalitées plus rapidement, ça pose d'autre problème notament au niveau des extentions.</p>
+<p>Par exemple la google bare.</p>
+<p>Pour que cette bare fonctionne toujours sur mon navigateur, je dézipe le fichier {6b6601f1-361e-4b9f-bb6d-f8305000e4f6}.xpi présent dans le répertoire extensions et modifie le champ "maxVersion" dans la section Seamonkey du fichier install.rdf. Ensuite, il suffit de refaire le zip et de relancer le navigateur et tout devrait être bon.</p>
+<p>Pour toute extention, une simple recherche texte dans le fichier extensions.rdf vous permettra de retrouver le nom du fichier .xpi ou du répertoire contenant l'extention. La procédure ensuite reste la même.</p>
+
+  </div>
+
+  
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/2011/09/17/wifi-openwrt-limite-a-65mbs/">Wifi sous OpenWrt limité à 65Mbs ?</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2011-09-17
+  </p>
+  <p>J'ai dans un coin une petite machine de chez PC Engines, une WARP 1.D. Il y a quelques jours, j'y ai mis OpenWrt et un carte wifi N. Malheureusement, le débit wifi plafonnait à 65 Mb/s malgrès une lageur de bande de 40MHz.</p>
+<p>En fait, la manipulation qui va bien est de se connecter en ssh et taper les commandes suivantes :</p>
+<pre><code>uci set wireless.radio0.noscan=1
+uci commit
+reboot
+</code></pre>
+<p>Depuis, mon wifi sur ce point d'accès est maintenant de 300Mb/s. Bon, j'ai encore beaucoup de chose à tester.</p>
+<p><a href="https://forum.openwrt.org/viewtopic.php?pid=137298">source</a></p>
+
+  </div>
+
+  
+
+  
+  <div class="pagination">
+    
+      <span class="disabled">&laquo; Previous</span>
+    
+    | 1 |
+    
+      <a href="../blog/page/2/">Next &raquo;</a>
+    
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>

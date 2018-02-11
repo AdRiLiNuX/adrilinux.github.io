@@ -1,0 +1,51 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../../static/style.css">
+<title>Wifi sous OpenWrt limité à 65Mbs ? — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../">Accueil</a></li>
+        
+          <li class="active"><a href="../../../../../blog/">Blog</a></li>
+        
+          <li><a href="../../../../../projects/">Projets</a></li>
+        
+          <li><a href="../../../../../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+  <div class="blog-post">
+  
+    <h2>Wifi sous OpenWrt limité à 65Mbs ?</h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2011-09-17
+  </p>
+  <p>J'ai dans un coin une petite machine de chez PC Engines, une WARP 1.D. Il y a quelques jours, j'y ai mis OpenWrt et un carte wifi N. Malheureusement, le débit wifi plafonnait à 65 Mb/s malgrès une lageur de bande de 40MHz.</p>
+<p>En fait, la manipulation qui va bien est de se connecter en ssh et taper les commandes suivantes :</p>
+<pre><code>uci set wireless.radio0.noscan=1
+uci commit
+reboot
+</code></pre>
+<p>Depuis, mon wifi sur ce point d'accès est maintenant de 300Mb/s. Bon, j'ai encore beaucoup de chose à tester.</p>
+<p><a href="https://forum.openwrt.org/viewtopic.php?pid=137298">source</a></p>
+
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>

@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../../static/style.css">
+<title>Désactiver le choix du navigateur — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../">Accueil</a></li>
+        
+          <li class="active"><a href="../../../../../blog/">Blog</a></li>
+        
+          <li><a href="../../../../../projects/">Projets</a></li>
+        
+          <li><a href="../../../../../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+  <div class="blog-post">
+  
+    <h2>Désactiver le choix du navigateur</h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-08-17
+  </p>
+  <p>Bonjour tout le monde.</p>
+<p>Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu'à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d'administration qui ne démarre qu'une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n'est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.</p>
+<p>Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans "HKEY_LOCAL_MACHINE\Software\BrowserChoice" du nom de "Enable". Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.</p>
+<p>Ensuite, la machine démarre plus vite 🙂</p>
+
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>

@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../../static/style.css">
+<title>Installation d&#39;un terminal web — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../">Accueil</a></li>
+        
+          <li class="active"><a href="../../../../../blog/">Blog</a></li>
+        
+          <li><a href="../../../../../projects/">Projets</a></li>
+        
+          <li><a href="../../../../../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+  <div class="blog-post">
+  
+    <h2>Installation d&#39;un terminal web</h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2010-12-19
+  </p>
+  <p>Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n'est pas authorisé vers l'extérieur pour des raisons de sécurité. Ce terminal n'étant qu'une page web, il est impossible de faire transiter autre chose que ce qui s'affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.</p>
+<p>Pour l'installation, il suffit de taper la commande suivante :</p>
+<pre><code>yum install Ajaxterm
+</code></pre>
+<p>Puis pour l'activer,</p>
+<pre><code>service ajaxterm start
+chkconfig ajaxterm on
+</code></pre>
+<p>Enfin, pour pouvoir y accéder, il faut rajouter ces lignes dans le vhost d'apache:</p>
+<pre><code>ProxyPass /ajaxterm/    http://localhost:8022/
+ProxyPassReverse    /ajaxterm/ http://localhost:8022/
+</code></pre>
+<p>Si le titre ne vous plait pas, vous pouvez le modifier via un sed par exemple dans le fichier /usr/share/ajaxterm/ajaxterm.html :</p>
+<pre><code>sed 's|\(&lt;title&gt;\)Ajaxterm\(&lt;/title&gt;\)|\1Nouveau Titre\2|' -i /usr/share/ajaxterm/ajaxterm.html
+</code></pre>
+
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>

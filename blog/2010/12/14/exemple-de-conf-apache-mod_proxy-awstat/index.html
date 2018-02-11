@@ -1,0 +1,94 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../../static/style.css">
+<title>exemple de conf apache + mod_proxy + awstat — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../">Accueil</a></li>
+        
+          <li class="active"><a href="../../../../../blog/">Blog</a></li>
+        
+          <li><a href="../../../../../projects/">Projets</a></li>
+        
+          <li><a href="../../../../../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+  <div class="blog-post">
+  
+    <h2>exemple de conf apache + mod_proxy + awstat</h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2010-12-14
+  </p>
+  <pre><code>RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net
+&lt;VirtualHost *:80&gt;
+    ServerName www.mon-site.fr
+    ProxyRequests Off
+    ##ProxyPreserveHost Off|On
+    #Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
+    &lt;Proxy balancer://mycluster&gt;
+        BalancerMember http://www1.mon-site.fr/
+        ##BalancerMember http://192.168.1.xxx:80
+        #BalancerMember http:// route=1
+        #BalancerMember http:// route=2
+        #ProxySet stickysession=ROUTEID
+    &lt;/Proxy&gt;
+    &lt;Proxy balancer://static&gt;
+        BalancerMember http://static.mon-site.fr/
+    &lt;/Proxy&gt;
+        ProxyPass /images/ balancer://static/images/
+        ProxyPassReverse /images/ balancer://static/images/
+        ProxyPass /include/ balancer://static/include/
+        ProxyPassReverse /include/ balancer://static/include/
+        ProxyPass /script/ balancer://static/script/
+        ProxyPassReverse /script/ balancer://static/script/
+        ProxyPass / balancer://mycluster
+        ProxyPassReverse / balancer://mycluster
+    &lt;/VirtualHost&gt;
+    # SSLProxyEngine On
+    # ProxyPass /wp-admin !
+    # ProxyPass / https://www.site.net/
+    # ProxyPassReverse / https://www.site.net/
+    # ProxyRequests off
+    # ProxyReceiveBufferSize 8192
+    # ProxyIOBufferSize 262144
+    #
+    # Directives to allow use of AWStats as a CGI
+    #
+    Alias /awstatsclasses "/usr/local/awstats/wwwroot/classes/"
+    Alias /awstatscss "/usr/local/awstats/wwwroot/css/"
+    Alias /awstatsicons "/usr/local/awstats/wwwroot/icon/"
+    ScriptAlias /awstats/ "/usr/local/awstats/wwwroot/cgi-bin/"
+    #
+    # This is to permit URL access to scripts/files in AWStats directory.
+    #
+    &lt;Directory "/usr/local/awstats/wwwroot"&gt;
+        Options None
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from xx.xx.xx.xx
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>

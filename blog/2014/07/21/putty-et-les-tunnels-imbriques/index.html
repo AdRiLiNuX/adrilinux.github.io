@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../../../static/style.css">
+<title>Putty et les tunnels imbriqués — AdRiLiNuX</title>
+<body>
+  <header>
+    <h1>AdRiLiNuX</h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="../../../../../">Accueil</a></li>
+        
+          <li class="active"><a href="../../../../../blog/">Blog</a></li>
+        
+          <li><a href="../../../../../projects/">Projets</a></li>
+        
+          <li><a href="../../../../../about/">À propos</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    
+  
+  <div class="blog-post">
+  
+    <h2>Putty et les tunnels imbriqués</h2>
+  
+  <p class="meta">
+    written by
+    
+      Adrien
+    
+    on 2014-07-21
+  </p>
+  <p>Bonjour,</p>
+<p>Pour ceux qui n'ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis.</p>
+<p>Dans mon cas, j'utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est facile de modifier sont fichier ~/.ssh/config pour créer des connexions ssh  avec rebond de manière transparente. Avec Putty, c'est un peu plus délicat, mais une fois que l'on a la méthode, ça roule.</p>
+<p>La méthode, c'est de définir l'hôte intermédiaire dans la page proxy avec les informations qui vont bien. Pour "proxy command", un copie/colle de ce qui suit devrait suffir:</p>
+<pre><code>plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n
+</code></pre>
+<p><img src="../../../../../blog/2014/07/21/putty-et-les-tunnels-imbriques/Putty_confproxy.png" alt="Putty_confproxy"></p>
+
+  </div>
+
+
+  </div>
+  <footer>
+    &copy; Copyright 2010-2018 by Adrien Reslinger.
+  </footer>
+</body>
