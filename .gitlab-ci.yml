@@ -3,11 +3,7 @@ image: python:latest
 pages:
   script:
     - pip install lektor
-    - git clone https://$MY_NAME:$GITHUB_TOKEN@github.com/AdRiLiNuX/adrilinux.github.io.git public
     - lektor build --output-path public
-    - git config --global user.email "$MY_EMAIL"
-    - git config --global user.name "$MY_NAME"
-    - cd public; git add .; git commit -m "Auto update"; git push
   artifacts:
     paths:
       - public
