@@ -1,0 +1,45 @@
+title: Gestion du cache avec Apache
+---
+pub_date: 2011-05-26
+---
+author: Adrien
+---
+excerpt: Après l'optimisation d'Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d'autant le serveur. La configuration du cache passe simplement par [&hellip;]
+---
+categories: 
+
+apache
+optimisations
+---
+_slug: /2011/05/26/gestion-du-cache-avec-apache/
+---
+body: 
+Après l'optimisation d'Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d'autant le serveur.
+
+La configuration du cache passe simplement par l'ajout du bloque suivant dans le fichier httpd.conf:
+
+    # Turn on Expires and set default to 0
+    ExpiresActive On
+    ExpiresDefault A0
+    # Set up caching on media files for 1 year (forever?)
+    <FilesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$">
+    ExpiresDefault A29030400
+    Header append Cache-Control "public"
+    </FilesMatch>
+    # Set up caching on media files for 1 week
+    <FilesMatch "\.(gif|jpg|jpeg|png|swf|js|css)$">
+    ExpiresDefault A604800
+    Header append Cache-Control "public"
+    </FilesMatch>
+    # Set up 2 Hour caching on commonly updated files
+    <FilesMatch "\.(xml|txt|html)$">
+    ExpiresDefault A7200
+    Header append Cache-Control "proxy-revalidate"
+    </FilesMatch>
+    # Force no caching for dynamic files
+    <FilesMatch "\.(php|cgi|pl|htm)$">
+    ExpiresActive Off
+    Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+    Header set Pragma "no-cache"
+    </FilesMatch>
+Voir aussi [ce lien](http://www.askapache.com/htaccess/speed-up-your-site-with-caching-and-cache-control.html)

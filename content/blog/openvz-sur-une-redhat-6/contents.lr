@@ -1,0 +1,57 @@
+title: OpenVZ sur une RedHat 6
+---
+pub_date: 2012-06-28
+---
+author: Adrien
+---
+excerpt: Bonjour tout le monde, Aujourd'hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s'agit pas exactement de virtualisation mais plutôt de conteneur. L'avantage, c'est que ça fonctionne sur des machines qui n'ont pas forcément les instructions de [&hellip;]
+---
+categories: 
+
+systeme
+virtualisation
+---
+_slug: /2012/06/28/openvz-sur-une-redhat-6/
+---
+body: 
+Bonjour tout le monde,
+
+Aujourd'hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s'agit pas exactement de virtualisation mais plutôt de conteneur. L'avantage, c'est que ça fonctionne sur des machines qui n'ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu'est un conteneur (dans ce contexte), je vais faire un petit rappel.
+
+Le conteneur permet de faire des machines virtuelles, mais celles ci n'auront pas un espace complet réservé comme sur d'autre système de virtualisation car pour le système hôte et les invités, il s'agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d'étape entre l'application d'une machine virtuelle et le matériel (disque, mémoire, cpu, ...). En contre parti, comme on a qu'un seul noyau, les invités sont donc du même type que l'hôte (Linux -- Linux, Windows -- Windows).
+
+Ici, nous ne verrons que la parti Linux. Le projet que nous allons utiliser s’appelle OpenVZ. Bien sûr, il y en a d'autre qui existe.
+
+Nôtre système hôte sera un clone d'une RedHat 6 (Scientific Linux 6).
+
+L'installation sur ce genre de système est vraiment très simple.
+
+Récupérez en premier la définition du dépôt :
+
+    cd /etc/yum.repos.d && wget http://download.openvz.org/openvz.repo && \
+    rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
+Ensuite, modifier le fichier openvz.repo pour désactiver le dépot redhat 5 et activer celui de la redhat 6.
+
+Enfin, installez le kernel:
+
+    yum install vzkernel-firmware vzkernel vzctl vzquota
+Pour que OpenVZ soit fonctionnel, il reste juste un peu de configuration. Désactiver SELinux (/etc/selinux/config) et mettez dans le fichier /etc/sysctl.conf ce qui suit:
+
+    # On Hardware Node we generally need  
+    # packet forwarding enabled and proxy arp disabled  
+    net.ipv4.ip_forward = 1  
+    net.ipv6.conf.default.forwarding = 1  
+    net.ipv6.conf.all.forwarding = 1  
+    net.ipv4.conf.default.proxy_arp = 0 
+    
+    # Enables source route verification  
+    net.ipv4.conf.all.rp_filter = 1 
+    
+    # Enables the magic-sysrq key  
+    kernel.sysrq = 1 
+    
+    # We do not want all our interfaces to send redirects  
+    net.ipv4.conf.default.send_redirects = 1  
+    net.ipv4.conf.all.send_redirects = 0
+Après un redémarrage sur le nouveau noyau, vous voilà prêt à créer et démarrer vos machines virtuelles.
+
