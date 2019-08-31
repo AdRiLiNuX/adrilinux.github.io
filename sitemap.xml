@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.reslinger.net/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/posts/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/securit%C3%A9/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/syst%C3%A8me/</loc>
+    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2017/10/hello-website-powered-by-lektor/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/systeme/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/windows/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2015/07/windows-en-dual-boot/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2014/12/console-virsh/</loc>
+    <lastmod>2014-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/virtualisation/</loc>
+    <lastmod>2014-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</loc>
+    <lastmod>2014-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2014/07/migration-dun-clone-rhel-vers-un-autre-ou-une-rhel/</loc>
+    <lastmod>2014-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2014/07/putty-et-les-tunnels-imbriqu%C3%A9s/</loc>
+    <lastmod>2014-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2012/06/openvz-sur-une-redhat-6/</loc>
+    <lastmod>2012-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2011/10/plugins-et-seamonkey/</loc>
+    <lastmod>2011-10-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/openwrt/</loc>
+    <lastmod>2011-09-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2011/09/wifi-sous-openwrt-limit%C3%A9-%C3%A0-65mbs/</loc>
+    <lastmod>2011-09-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/apache/</loc>
+    <lastmod>2011-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2011/05/gestion-du-cache-avec-apache/</loc>
+    <lastmod>2011-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/optimisations/</loc>
+    <lastmod>2011-05-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/applications-web/</loc>
+    <lastmod>2011-04-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2011/04/optimisation-de-wordpress/</loc>
+    <lastmod>2011-04-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2011/01/optimisation-apache-par-compression/</loc>
+    <lastmod>2011-01-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2010/12/installation-dun-terminal-web/</loc>
+    <lastmod>2010-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</loc>
+    <lastmod>2010-12-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/2010/11/bonjour-tout-le-monde/</loc>
+    <lastmod>2010-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/tags/</loc>
+  </url>
+  
+</urlset>

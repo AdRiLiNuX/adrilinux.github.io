@@ -1,0 +1,95 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/</link>
+    <description>Recent content in Categories on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>securité</title>
+      <link>https://www.reslinger.net/categories/securit%C3%A9/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/securit%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>système</title>
+      <link>https://www.reslinger.net/categories/syst%C3%A8me/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/syst%C3%A8me/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systeme</title>
+      <link>https://www.reslinger.net/categories/systeme/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/systeme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://www.reslinger.net/categories/windows/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualisation</title>
+      <link>https://www.reslinger.net/categories/virtualisation/</link>
+      <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/virtualisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openwrt</title>
+      <link>https://www.reslinger.net/categories/openwrt/</link>
+      <pubDate>Sat, 17 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/openwrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apache</title>
+      <link>https://www.reslinger.net/categories/apache/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimisations</title>
+      <link>https://www.reslinger.net/categories/optimisations/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/optimisations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>applications-web</title>
+      <link>https://www.reslinger.net/categories/applications-web/</link>
+      <pubDate>Fri, 08 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/applications-web/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

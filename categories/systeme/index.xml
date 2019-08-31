@@ -1,0 +1,149 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>systeme on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/systeme/</link>
+    <description>Recent content in systeme on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 01 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/systeme/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows en dual boot</title>
+      <link>https://www.reslinger.net/2015/07/windows-en-dual-boot/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2015/07/windows-en-dual-boot/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&amp;rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&amp;rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&amp;rsquo;une horloge BIOS en UTC.&lt;/p&gt;
+
+&lt;p&gt;Voici les différentes étapes :&lt;/p&gt;
+
+&lt;p&gt;Configuration de la base de regisre pour avoir l&amp;rsquo;heure bios en utc :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Synchroniser l&amp;rsquo;heure :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;w32tm /config /update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Désactiver le service Windows Time service qui écrit l&amp;rsquo;heure à chaque arrêt du système sans regarder le registre :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sc config w32time start= disabled
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Migration d&#39;un clone RHEL vers un autre (ou une RHEL)</title>
+      <link>https://www.reslinger.net/2014/07/migration-dun-clone-rhel-vers-un-autre-ou-une-rhel/</link>
+      <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2014/07/migration-dun-clone-rhel-vers-un-autre-ou-une-rhel/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&amp;rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.&lt;/p&gt;
+
+&lt;p&gt;C&amp;rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&amp;rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.&lt;/p&gt;
+
+&lt;p&gt;Pour ce faire, j&amp;rsquo;ai utilisé ce &lt;a href=&#34;http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/&#34;&gt;premier lien&lt;/a&gt; et ce &lt;a href=&#34;http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5&#34;&gt;second lien&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Voici pour info ce que j&amp;rsquo;ai tapé:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}
+rpm -e --nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)
+rpm -ivh *
+yum clean all &amp;amp;&amp;amp; yum reinstall $(rpm -qa --qf &amp;quot;%{NAME} %{VENDOR}\n&amp;quot; | egrep &#39;(ClearFoundation|Red Hat, Inc.)&#39; | cut -d\  -f1)
+yum update
+yum clean all &amp;amp;&amp;amp; yum --releasever=6x update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenVZ sur une RedHat 6</title>
+      <link>https://www.reslinger.net/2012/06/openvz-sur-une-redhat-6/</link>
+      <pubDate>Thu, 28 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2012/06/openvz-sur-une-redhat-6/</guid>
+      <description>&lt;p&gt;Bonjour tout le monde,&lt;/p&gt;
+
+&lt;p&gt;Aujourd&amp;rsquo;hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s&amp;rsquo;agit pas exactement de virtualisation mais plutôt de conteneur. L&amp;rsquo;avantage, c&amp;rsquo;est que ça fonctionne sur des machines qui n&amp;rsquo;ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu&amp;rsquo;est un conteneur (dans ce contexte), je vais faire un petit rappel.&lt;/p&gt;
+
+&lt;p&gt;Le conteneur permet de faire des machines virtuelles, mais celles ci n&amp;rsquo;auront pas un espace complet réservé comme sur d&amp;rsquo;autre système de virtualisation car pour le système hôte et les invités, il s&amp;rsquo;agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d&amp;rsquo;étape entre l&amp;rsquo;application d&amp;rsquo;une machine virtuelle et le matériel (disque, mémoire, cpu, &amp;hellip;). En contre parti, comme on a qu&amp;rsquo;un seul noyau, les invités sont donc du même type que l&amp;rsquo;hôte (Linux &amp;ndash; Linux, Windows &amp;ndash; Windows).&lt;/p&gt;
+
+&lt;p&gt;Ici, nous ne verrons que la parti Linux. Le projet que nous allons utiliser s’appelle OpenVZ. Bien sûr, il y en a d&amp;rsquo;autre qui existe.&lt;/p&gt;
+
+&lt;p&gt;Nôtre système hôte sera un clone d&amp;rsquo;une RedHat 6 (Scientific Linux 6).&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;installation sur ce genre de système est vraiment très simple.&lt;/p&gt;
+
+&lt;p&gt;Récupérez en premier la définition du dépôt :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/yum.repos.d &amp;amp;&amp;amp; wget http://download.openvz.org/openvz.repo &amp;amp;&amp;amp; \
+rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensuite, modifier le fichier openvz.repo pour désactiver le dépot redhat 5 et activer celui de la redhat 6.&lt;/p&gt;
+
+&lt;p&gt;Enfin, installez le kernel:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install vzkernel-firmware vzkernel vzctl vzquota
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour que OpenVZ soit fonctionnel, il reste juste un peu de configuration. Désactiver SELinux (/etc/selinux/config) et mettez dans le fichier /etc/sysctl.conf ce qui suit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# On Hardware Node we generally need  
+# packet forwarding enabled and proxy arp disabled  
+net.ipv4.ip_forward = 1  
+net.ipv6.conf.default.forwarding = 1  
+net.ipv6.conf.all.forwarding = 1  
+net.ipv4.conf.default.proxy_arp = 0 
+
+# Enables source route verification  
+net.ipv4.conf.all.rp_filter = 1 
+
+# Enables the magic-sysrq key  
+kernel.sysrq = 1 
+
+# We do not want all our interfaces to send redirects  
+net.ipv4.conf.default.send_redirects = 1  
+net.ipv4.conf.all.send_redirects = 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Après un redémarrage sur le nouveau noyau, vous voilà prêt à créer et démarrer vos machines virtuelles.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wifi sous OpenWrt limité à 65Mbs ?</title>
+      <link>https://www.reslinger.net/2011/09/wifi-sous-openwrt-limit%C3%A9-%C3%A0-65mbs/</link>
+      <pubDate>Sat, 17 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/09/wifi-sous-openwrt-limit%C3%A9-%C3%A0-65mbs/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai dans un coin une petite machine de chez PC Engines, une WARP 1.D. Il y a quelques jours, j&amp;rsquo;y ai mis OpenWrt et un carte wifi N. Malheureusement, le débit wifi plafonnait à 65 Mb/s malgrès une lageur de bande de 40MHz.&lt;/p&gt;
+
+&lt;p&gt;En fait, la manipulation qui va bien est de se connecter en ssh et taper les commandes suivantes :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uci set wireless.radio0.noscan=1
+uci commit
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Depuis, mon wifi sur ce point d&amp;rsquo;accès est maintenant de 300Mb/s. Bon, j&amp;rsquo;ai encore beaucoup de chose à tester.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://forum.openwrt.org/viewtopic.php?pid=137298&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

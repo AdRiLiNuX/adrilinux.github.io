@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>AdRiLiNuX&#39;s web site  | exemple de conf apache &#43; mod_proxy &#43; awstat</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.57.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="exemple de conf apache &#43; mod_proxy &#43; awstat" />
+<meta property="og:description" content="RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ ProxyPass / balancer://mycluster ProxyPassReverse / balancer://mycluster &lt;/VirtualHost&gt; # SSLProxyEngine On # ProxyPass /wp-admin ! # ProxyPass / https://www." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/" />
+<meta property="article:published_time" content="2010-12-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-12-14T00:00:00+00:00" />
+<meta itemprop="name" content="exemple de conf apache &#43; mod_proxy &#43; awstat">
+<meta itemprop="description" content="RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ ProxyPass / balancer://mycluster ProxyPassReverse / balancer://mycluster &lt;/VirtualHost&gt; # SSLProxyEngine On # ProxyPass /wp-admin ! # ProxyPass / https://www.">
+
+
+<meta itemprop="datePublished" content="2010-12-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2010-12-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="140">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="exemple de conf apache &#43; mod_proxy &#43; awstat"/>
+<meta name="twitter:description" content="RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ ProxyPass / balancer://mycluster ProxyPassReverse / balancer://mycluster &lt;/VirtualHost&gt; # SSLProxyEngine On # ProxyPass /wp-admin ! # ProxyPass / https://www."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://www.reslinger.net/" class="f3 fw2 hover-white no-underline white-90 dib">
+      AdRiLiNuX&#39;s web site
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">exemple de conf apache &#43; mod_proxy &#43; awstat</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2010-12-14T00:00:00Z">December 14, 2010</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><pre><code>RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net
+&lt;VirtualHost *:80&gt;
+    ServerName www.mon-site.fr
+    ProxyRequests Off
+    ##ProxyPreserveHost Off|On
+    #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED
+    &lt;Proxy balancer://mycluster&gt;
+        BalancerMember http://www1.mon-site.fr/
+        ##BalancerMember http://192.168.1.xxx:80
+        #BalancerMember http:// route=1
+        #BalancerMember http:// route=2
+        #ProxySet stickysession=ROUTEID
+    &lt;/Proxy&gt;
+    &lt;Proxy balancer://static&gt;
+        BalancerMember http://static.mon-site.fr/
+    &lt;/Proxy&gt;
+        ProxyPass /images/ balancer://static/images/
+        ProxyPassReverse /images/ balancer://static/images/
+        ProxyPass /include/ balancer://static/include/
+        ProxyPassReverse /include/ balancer://static/include/
+        ProxyPass /script/ balancer://static/script/
+        ProxyPassReverse /script/ balancer://static/script/
+        ProxyPass / balancer://mycluster
+        ProxyPassReverse / balancer://mycluster
+    &lt;/VirtualHost&gt;
+    # SSLProxyEngine On
+    # ProxyPass /wp-admin !
+    # ProxyPass / https://www.site.net/
+    # ProxyPassReverse / https://www.site.net/
+    # ProxyRequests off
+    # ProxyReceiveBufferSize 8192
+    # ProxyIOBufferSize 262144
+    #
+    # Directives to allow use of AWStats as a CGI
+    #
+    Alias /awstatsclasses &quot;/usr/local/awstats/wwwroot/classes/&quot;
+    Alias /awstatscss &quot;/usr/local/awstats/wwwroot/css/&quot;
+    Alias /awstatsicons &quot;/usr/local/awstats/wwwroot/icon/&quot;
+    ScriptAlias /awstats/ &quot;/usr/local/awstats/wwwroot/cgi-bin/&quot;
+    #
+    # This is to permit URL access to scripts/files in AWStats directory.
+    #
+    &lt;Directory &quot;/usr/local/awstats/wwwroot&quot;&gt;
+        Options None
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from xx.xx.xx.xx
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
+    &copy; 2019 AdRiLiNuX&#39;s web site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

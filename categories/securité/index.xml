@@ -1,0 +1,46 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>securité on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/securit%C3%A9/</link>
+    <description>Recent content in securité on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/securit%C3%A9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chiffrer son homedir sous Ubuntu</title>
+      <link>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&amp;rsquo;était suffisant.
+La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&amp;rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installation des paquets :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt install ecryptfs-utils libpam-mount
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;encryption du homedir :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u $MON_USER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u mon_user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;L&amp;rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .&lt;/p&gt;
+
+&lt;p&gt;Source utilisée: &lt;a href=&#34;https://doc.ubuntu-fr.org/ecryptfs&#34;&gt;ecryptfs sur ubuntu-fr&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

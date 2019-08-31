@@ -1,0 +1,71 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>applications-web on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/applications-web/</link>
+    <description>Recent content in applications-web on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 08 Apr 2011 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/applications-web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Optimisation de WordPress</title>
+      <link>https://www.reslinger.net/2011/04/optimisation-de-wordpress/</link>
+      <pubDate>Fri, 08 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/04/optimisation-de-wordpress/</guid>
+      <description>&lt;p&gt;Depuis quelques temps, je me suis occupé de l&amp;rsquo;optimisation de mon wordpress. Pas de modification de code, seulement l&amp;rsquo;installation de plugins et de la configuration.
+Les plugins que j&amp;rsquo;ai installé sont:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Head Cleaner: Head Cleaner permet la minification et la concaténation des CSS et JS. Et il le fait bien&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;W3 Total Cache: Enfin, W3 Total Cache permet la mise en cache des pages. Il faut penser à désactiver la partie minification car elle est déjà prise en charge par Head Cleaner et WP-Minifier.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;J&amp;rsquo;avais aussi testé Theme Minifier pour mimifier les thémes, mais Head Cleaner prend la minification du thème à la volée. En plus, Theme Minifier casse la traduction du thème.&lt;/p&gt;
+
+&lt;p&gt;Enfin bref, après de nombreux test et pas mal de temps, j&amp;rsquo;obtiens un beau résultat sur les sites comme &lt;a href=&#34;https://gtmetrix.com&#34;&gt;gtmetrix.com&lt;/a&gt;. Je vous laisse juger du résultat par vous même.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.reslinger.net/img/gtmetrix-final-300x241.jpg&#34; alt=&#34;gtmetrix-final&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.reslinger.net/img/gtmetrix-final.jpg&#34; title=&#34;Taille Originale&#34;&gt;Taille Originale&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installation d&#39;un terminal web</title>
+      <link>https://www.reslinger.net/2010/12/installation-dun-terminal-web/</link>
+      <pubDate>Sun, 19 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2010/12/installation-dun-terminal-web/</guid>
+      <description>&lt;p&gt;Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&amp;rsquo;est pas authorisé vers l&amp;rsquo;extérieur pour des raisons de sécurité. Ce terminal n&amp;rsquo;étant qu&amp;rsquo;une page web, il est impossible de faire transiter autre chose que ce qui s&amp;rsquo;affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installation, il suffit de taper la commande suivante :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install Ajaxterm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis pour l&amp;rsquo;activer,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service ajaxterm start
+chkconfig ajaxterm on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin, pour pouvoir y accéder, il faut rajouter ces lignes dans le vhost d&amp;rsquo;apache:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ProxyPass /ajaxterm/    http://localhost:8022/
+ProxyPassReverse    /ajaxterm/ http://localhost:8022/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si le titre ne vous plait pas, vous pouvez le modifier via un sed par exemple dans le fichier /usr/share/ajaxterm/ajaxterm.html :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sed &#39;s|\(&amp;lt;title&amp;gt;\)Ajaxterm\(&amp;lt;/title&amp;gt;\)|\1Nouveau Titre\2|&#39; -i /usr/share/ajaxterm/ajaxterm.html
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,475 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/</link>
+    <description>Recent content on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chiffrer son homedir sous Ubuntu</title>
+      <link>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&amp;rsquo;était suffisant.
+La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&amp;rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installation des paquets :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt install ecryptfs-utils libpam-mount
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;encryption du homedir :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u $MON_USER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u mon_user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;L&amp;rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .&lt;/p&gt;
+
+&lt;p&gt;Source utilisée: &lt;a href=&#34;https://doc.ubuntu-fr.org/ecryptfs&#34;&gt;ecryptfs sur ubuntu-fr&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello Website powered by lektor</title>
+      <link>https://www.reslinger.net/2017/10/hello-website-powered-by-lektor/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2017/10/hello-website-powered-by-lektor/</guid>
+      <description>&lt;p&gt;Bonjour tout le monde,&lt;/p&gt;
+
+&lt;p&gt;Vous l&amp;rsquo;aurez peut être tous remarqué, le site à changé de tête. En fait, Je n&amp;rsquo;utilise plus &lt;a href=&#34;https://wordpress.org&#34;&gt;Wordpress&lt;/a&gt; comme moteur de blog bien qu&amp;rsquo;il est supporté mon site durant les 7 dernières années sur un serveur dédié. Évolution oblige, je suis passé sur &lt;a href=&#34;https://www.getlektor.com&#34;&gt;lektor&lt;/a&gt;, un générateur de site static basé sur python, et au déploiement automatique. Les anciens articles publiés sont réimportés, le déploiement automatique est opérationnel, le thème est encore à revoir.&lt;/p&gt;
+
+&lt;p&gt;Il y aura donc encore des changements sur le site dans les prochains jours.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows en dual boot</title>
+      <link>https://www.reslinger.net/2015/07/windows-en-dual-boot/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2015/07/windows-en-dual-boot/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&amp;rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&amp;rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&amp;rsquo;une horloge BIOS en UTC.&lt;/p&gt;
+
+&lt;p&gt;Voici les différentes étapes :&lt;/p&gt;
+
+&lt;p&gt;Configuration de la base de regisre pour avoir l&amp;rsquo;heure bios en utc :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Synchroniser l&amp;rsquo;heure :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;w32tm /config /update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Désactiver le service Windows Time service qui écrit l&amp;rsquo;heure à chaque arrêt du système sans regarder le registre :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sc config w32time start= disabled
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Console virsh</title>
+      <link>https://www.reslinger.net/2014/12/console-virsh/</link>
+      <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2014/12/console-virsh/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;Aujourd&amp;rsquo;hui, rien de passionnant, juste un petit mémo pour l&amp;rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.&lt;/p&gt;
+
+&lt;p&gt;Pour entrer :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;virsh console VM
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour sortir&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Ctrl + ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Désactiver le choix du navigateur</title>
+      <link>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</link>
+      <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</guid>
+      <description>&lt;p&gt;Bonjour tout le monde.&lt;/p&gt;
+
+&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&amp;rsquo;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
+
+&lt;p&gt;Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans &amp;ldquo;HKEY_LOCAL_MACHINE\Software\BrowserChoice&amp;rdquo; du nom de &amp;ldquo;Enable&amp;rdquo;. Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, la machine démarre plus vite 🙂&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Migration d&#39;un clone RHEL vers un autre (ou une RHEL)</title>
+      <link>https://www.reslinger.net/2014/07/migration-dun-clone-rhel-vers-un-autre-ou-une-rhel/</link>
+      <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2014/07/migration-dun-clone-rhel-vers-un-autre-ou-une-rhel/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&amp;rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.&lt;/p&gt;
+
+&lt;p&gt;C&amp;rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&amp;rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.&lt;/p&gt;
+
+&lt;p&gt;Pour ce faire, j&amp;rsquo;ai utilisé ce &lt;a href=&#34;http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/&#34;&gt;premier lien&lt;/a&gt; et ce &lt;a href=&#34;http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5&#34;&gt;second lien&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Voici pour info ce que j&amp;rsquo;ai tapé:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}
+rpm -e --nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)
+rpm -ivh *
+yum clean all &amp;amp;&amp;amp; yum reinstall $(rpm -qa --qf &amp;quot;%{NAME} %{VENDOR}\n&amp;quot; | egrep &#39;(ClearFoundation|Red Hat, Inc.)&#39; | cut -d\  -f1)
+yum update
+yum clean all &amp;amp;&amp;amp; yum --releasever=6x update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Putty et les tunnels imbriqués</title>
+      <link>https://www.reslinger.net/2014/07/putty-et-les-tunnels-imbriqu%C3%A9s/</link>
+      <pubDate>Mon, 21 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2014/07/putty-et-les-tunnels-imbriqu%C3%A9s/</guid>
+      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
+
+&lt;p&gt;Pour ceux qui n&amp;rsquo;ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis.&lt;/p&gt;
+
+&lt;p&gt;Dans mon cas, j&amp;rsquo;utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est facile de modifier sont fichier ~/.ssh/config pour créer des connexions ssh  avec rebond de manière transparente. Avec Putty, c&amp;rsquo;est un peu plus délicat, mais une fois que l&amp;rsquo;on a la méthode, ça roule.&lt;/p&gt;
+
+&lt;p&gt;La méthode, c&amp;rsquo;est de définir l&amp;rsquo;hôte intermédiaire dans la page proxy avec les informations qui vont bien. Pour &amp;ldquo;proxy command&amp;rdquo;, un copie/colle de ce qui suit devrait suffir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.reslinger.net/img/Putty_confproxy.png&#34; alt=&#34;Putty_confproxy&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenVZ sur une RedHat 6</title>
+      <link>https://www.reslinger.net/2012/06/openvz-sur-une-redhat-6/</link>
+      <pubDate>Thu, 28 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2012/06/openvz-sur-une-redhat-6/</guid>
+      <description>&lt;p&gt;Bonjour tout le monde,&lt;/p&gt;
+
+&lt;p&gt;Aujourd&amp;rsquo;hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s&amp;rsquo;agit pas exactement de virtualisation mais plutôt de conteneur. L&amp;rsquo;avantage, c&amp;rsquo;est que ça fonctionne sur des machines qui n&amp;rsquo;ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu&amp;rsquo;est un conteneur (dans ce contexte), je vais faire un petit rappel.&lt;/p&gt;
+
+&lt;p&gt;Le conteneur permet de faire des machines virtuelles, mais celles ci n&amp;rsquo;auront pas un espace complet réservé comme sur d&amp;rsquo;autre système de virtualisation car pour le système hôte et les invités, il s&amp;rsquo;agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d&amp;rsquo;étape entre l&amp;rsquo;application d&amp;rsquo;une machine virtuelle et le matériel (disque, mémoire, cpu, &amp;hellip;). En contre parti, comme on a qu&amp;rsquo;un seul noyau, les invités sont donc du même type que l&amp;rsquo;hôte (Linux &amp;ndash; Linux, Windows &amp;ndash; Windows).&lt;/p&gt;
+
+&lt;p&gt;Ici, nous ne verrons que la parti Linux. Le projet que nous allons utiliser s’appelle OpenVZ. Bien sûr, il y en a d&amp;rsquo;autre qui existe.&lt;/p&gt;
+
+&lt;p&gt;Nôtre système hôte sera un clone d&amp;rsquo;une RedHat 6 (Scientific Linux 6).&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;installation sur ce genre de système est vraiment très simple.&lt;/p&gt;
+
+&lt;p&gt;Récupérez en premier la définition du dépôt :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/yum.repos.d &amp;amp;&amp;amp; wget http://download.openvz.org/openvz.repo &amp;amp;&amp;amp; \
+rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensuite, modifier le fichier openvz.repo pour désactiver le dépot redhat 5 et activer celui de la redhat 6.&lt;/p&gt;
+
+&lt;p&gt;Enfin, installez le kernel:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install vzkernel-firmware vzkernel vzctl vzquota
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pour que OpenVZ soit fonctionnel, il reste juste un peu de configuration. Désactiver SELinux (/etc/selinux/config) et mettez dans le fichier /etc/sysctl.conf ce qui suit:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# On Hardware Node we generally need  
+# packet forwarding enabled and proxy arp disabled  
+net.ipv4.ip_forward = 1  
+net.ipv6.conf.default.forwarding = 1  
+net.ipv6.conf.all.forwarding = 1  
+net.ipv4.conf.default.proxy_arp = 0 
+
+# Enables source route verification  
+net.ipv4.conf.all.rp_filter = 1 
+
+# Enables the magic-sysrq key  
+kernel.sysrq = 1 
+
+# We do not want all our interfaces to send redirects  
+net.ipv4.conf.default.send_redirects = 1  
+net.ipv4.conf.all.send_redirects = 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Après un redémarrage sur le nouveau noyau, vous voilà prêt à créer et démarrer vos machines virtuelles.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Plugins et Seamonkey</title>
+      <link>https://www.reslinger.net/2011/10/plugins-et-seamonkey/</link>
+      <pubDate>Sun, 16 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/10/plugins-et-seamonkey/</guid>
+      <description>&lt;p&gt;Bonjour,Depuis quelque temps maintenant, la fondation mozilla publie une nouvelle version de firefox beaucoup plus fréquement, et par conséquant seamonkey aussi. Bien que cela permet d&amp;rsquo;apporter de nouvelles fonctionnalitées plus rapidement, ça pose d&amp;rsquo;autre problème notament au niveau des extentions.&lt;/p&gt;
+
+&lt;p&gt;Par exemple la google bare.&lt;/p&gt;
+
+&lt;p&gt;Pour que cette bare fonctionne toujours sur mon navigateur, je dézipe le fichier {6b6601f1-361e-4b9f-bb6d-f8305000e4f6}.xpi présent dans le répertoire extensions et modifie le champ &amp;ldquo;maxVersion&amp;rdquo; dans la section Seamonkey du fichier install.rdf. Ensuite, il suffit de refaire le zip et de relancer le navigateur et tout devrait être bon.&lt;/p&gt;
+
+&lt;p&gt;Pour toute extention, une simple recherche texte dans le fichier extensions.rdf vous permettra de retrouver le nom du fichier .xpi ou du répertoire contenant l&amp;rsquo;extention. La procédure ensuite reste la même.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wifi sous OpenWrt limité à 65Mbs ?</title>
+      <link>https://www.reslinger.net/2011/09/wifi-sous-openwrt-limit%C3%A9-%C3%A0-65mbs/</link>
+      <pubDate>Sat, 17 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/09/wifi-sous-openwrt-limit%C3%A9-%C3%A0-65mbs/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai dans un coin une petite machine de chez PC Engines, une WARP 1.D. Il y a quelques jours, j&amp;rsquo;y ai mis OpenWrt et un carte wifi N. Malheureusement, le débit wifi plafonnait à 65 Mb/s malgrès une lageur de bande de 40MHz.&lt;/p&gt;
+
+&lt;p&gt;En fait, la manipulation qui va bien est de se connecter en ssh et taper les commandes suivantes :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;uci set wireless.radio0.noscan=1
+uci commit
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Depuis, mon wifi sur ce point d&amp;rsquo;accès est maintenant de 300Mb/s. Bon, j&amp;rsquo;ai encore beaucoup de chose à tester.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://forum.openwrt.org/viewtopic.php?pid=137298&#34;&gt;source&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gestion du cache avec Apache</title>
+      <link>https://www.reslinger.net/2011/05/gestion-du-cache-avec-apache/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/05/gestion-du-cache-avec-apache/</guid>
+      <description>&lt;p&gt;Après l&amp;rsquo;optimisation d&amp;rsquo;Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d&amp;rsquo;autant le serveur.&lt;/p&gt;
+
+&lt;p&gt;La configuration du cache passe simplement par l&amp;rsquo;ajout du bloque suivant dans le fichier httpd.conf:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Turn on Expires and set default to 0
+ExpiresActive On
+ExpiresDefault A0
+# Set up caching on media files for 1 year (forever?)
+&amp;lt;FilesMatch &amp;quot;\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$&amp;quot;&amp;gt;
+ExpiresDefault A29030400
+Header append Cache-Control &amp;quot;public&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Set up caching on media files for 1 week
+&amp;lt;FilesMatch &amp;quot;\.(gif|jpg|jpeg|png|swf|js|css)$&amp;quot;&amp;gt;
+ExpiresDefault A604800
+Header append Cache-Control &amp;quot;public&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Set up 2 Hour caching on commonly updated files
+&amp;lt;FilesMatch &amp;quot;\.(xml|txt|html)$&amp;quot;&amp;gt;
+ExpiresDefault A7200
+Header append Cache-Control &amp;quot;proxy-revalidate&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Force no caching for dynamic files
+&amp;lt;FilesMatch &amp;quot;\.(php|cgi|pl|htm)$&amp;quot;&amp;gt;
+ExpiresActive Off
+Header set Cache-Control &amp;quot;private, no-cache, no-store, proxy-revalidate, no-transform&amp;quot;
+Header set Pragma &amp;quot;no-cache&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voir aussi &lt;a href=&#34;http://www.askapache.com/htaccess/speed-up-your-site-with-caching-and-cache-control.html&#34;&gt;ce lien&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Optimisation de WordPress</title>
+      <link>https://www.reslinger.net/2011/04/optimisation-de-wordpress/</link>
+      <pubDate>Fri, 08 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/04/optimisation-de-wordpress/</guid>
+      <description>&lt;p&gt;Depuis quelques temps, je me suis occupé de l&amp;rsquo;optimisation de mon wordpress. Pas de modification de code, seulement l&amp;rsquo;installation de plugins et de la configuration.
+Les plugins que j&amp;rsquo;ai installé sont:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Head Cleaner: Head Cleaner permet la minification et la concaténation des CSS et JS. Et il le fait bien&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;W3 Total Cache: Enfin, W3 Total Cache permet la mise en cache des pages. Il faut penser à désactiver la partie minification car elle est déjà prise en charge par Head Cleaner et WP-Minifier.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;J&amp;rsquo;avais aussi testé Theme Minifier pour mimifier les thémes, mais Head Cleaner prend la minification du thème à la volée. En plus, Theme Minifier casse la traduction du thème.&lt;/p&gt;
+
+&lt;p&gt;Enfin bref, après de nombreux test et pas mal de temps, j&amp;rsquo;obtiens un beau résultat sur les sites comme &lt;a href=&#34;https://gtmetrix.com&#34;&gt;gtmetrix.com&lt;/a&gt;. Je vous laisse juger du résultat par vous même.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.reslinger.net/img/gtmetrix-final-300x241.jpg&#34; alt=&#34;gtmetrix-final&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.reslinger.net/img/gtmetrix-final.jpg&#34; title=&#34;Taille Originale&#34;&gt;Taille Originale&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Optimisation Apache par compression</title>
+      <link>https://www.reslinger.net/2011/01/optimisation-apache-par-compression/</link>
+      <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/01/optimisation-apache-par-compression/</guid>
+      <description>&lt;p&gt;Aujourd&amp;rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à  transférer , la bande passante s&amp;rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).&lt;/p&gt;
+
+&lt;p&gt;Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&amp;rsquo;apache. S&amp;rsquo;ils sont présent, nous n&amp;rsquo;avons qu&amp;rsquo;un peu de configuration à  faire.&lt;/p&gt;
+
+&lt;p&gt;Dans le répertoire conf.d, il faut créé (ou modifier) le fichier mod_deflate.conf pour y inclure le contenu suivant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Location /&amp;gt;
+# Ajoute un filtre
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+# Ne pas compresser les images
+SetEnvIfNoCase Request_URI \
+\.(?:gif|jpe?g|png)$ no-gzip dont-vary
+Header append Vary User-Agent env=!dont-vary
+&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensuite, il ne reste plus qu&amp;rsquo;à  ajouter la ligne:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SetOutputFilter DEFLATE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dans chacuns des vhosts où l&amp;rsquo;on veut activer la compression des pages.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installation d&#39;un terminal web</title>
+      <link>https://www.reslinger.net/2010/12/installation-dun-terminal-web/</link>
+      <pubDate>Sun, 19 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2010/12/installation-dun-terminal-web/</guid>
+      <description>&lt;p&gt;Dans cet article, nous allons installer un terminal en mode web. À quoi celà  peut servir ? Ben à  avoir un accès externe pour aller voir des configurations par exemple lorsque le protocole n&amp;rsquo;est pas authorisé vers l&amp;rsquo;extérieur pour des raisons de sécurité. Ce terminal n&amp;rsquo;étant qu&amp;rsquo;une page web, il est impossible de faire transiter autre chose que ce qui s&amp;rsquo;affiche dans la fenêtre du terminal. Donc pas de transfert de fichiers ni de tunnel.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;installation, il suffit de taper la commande suivante :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install Ajaxterm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis pour l&amp;rsquo;activer,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service ajaxterm start
+chkconfig ajaxterm on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin, pour pouvoir y accéder, il faut rajouter ces lignes dans le vhost d&amp;rsquo;apache:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ProxyPass /ajaxterm/    http://localhost:8022/
+ProxyPassReverse    /ajaxterm/ http://localhost:8022/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Si le titre ne vous plait pas, vous pouvez le modifier via un sed par exemple dans le fichier /usr/share/ajaxterm/ajaxterm.html :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sed &#39;s|\(&amp;lt;title&amp;gt;\)Ajaxterm\(&amp;lt;/title&amp;gt;\)|\1Nouveau Titre\2|&#39; -i /usr/share/ajaxterm/ajaxterm.html
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>exemple de conf apache &#43; mod_proxy &#43; awstat</title>
+      <link>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</link>
+      <pubDate>Tue, 14 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net
+&amp;lt;VirtualHost *:80&amp;gt;
+    ServerName www.mon-site.fr
+    ProxyRequests Off
+    ##ProxyPreserveHost Off|On
+    #Header add Set-Cookie &amp;quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&amp;quot; env=BALANCER_ROUTE_CHANGED
+    &amp;lt;Proxy balancer://mycluster&amp;gt;
+        BalancerMember http://www1.mon-site.fr/
+        ##BalancerMember http://192.168.1.xxx:80
+        #BalancerMember http:// route=1
+        #BalancerMember http:// route=2
+        #ProxySet stickysession=ROUTEID
+    &amp;lt;/Proxy&amp;gt;
+    &amp;lt;Proxy balancer://static&amp;gt;
+        BalancerMember http://static.mon-site.fr/
+    &amp;lt;/Proxy&amp;gt;
+        ProxyPass /images/ balancer://static/images/
+        ProxyPassReverse /images/ balancer://static/images/
+        ProxyPass /include/ balancer://static/include/
+        ProxyPassReverse /include/ balancer://static/include/
+        ProxyPass /script/ balancer://static/script/
+        ProxyPassReverse /script/ balancer://static/script/
+        ProxyPass / balancer://mycluster
+        ProxyPassReverse / balancer://mycluster
+    &amp;lt;/VirtualHost&amp;gt;
+    # SSLProxyEngine On
+    # ProxyPass /wp-admin !
+    # ProxyPass / https://www.site.net/
+    # ProxyPassReverse / https://www.site.net/
+    # ProxyRequests off
+    # ProxyReceiveBufferSize 8192
+    # ProxyIOBufferSize 262144
+    #
+    # Directives to allow use of AWStats as a CGI
+    #
+    Alias /awstatsclasses &amp;quot;/usr/local/awstats/wwwroot/classes/&amp;quot;
+    Alias /awstatscss &amp;quot;/usr/local/awstats/wwwroot/css/&amp;quot;
+    Alias /awstatsicons &amp;quot;/usr/local/awstats/wwwroot/icon/&amp;quot;
+    ScriptAlias /awstats/ &amp;quot;/usr/local/awstats/wwwroot/cgi-bin/&amp;quot;
+    #
+    # This is to permit URL access to scripts/files in AWStats directory.
+    #
+    &amp;lt;Directory &amp;quot;/usr/local/awstats/wwwroot&amp;quot;&amp;gt;
+        Options None
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from xx.xx.xx.xx
+    &amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bonjour tout le monde !</title>
+      <link>https://www.reslinger.net/2010/11/bonjour-tout-le-monde/</link>
+      <pubDate>Fri, 26 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2010/11/bonjour-tout-le-monde/</guid>
+      <description>&lt;p&gt;Bienvenue sur mon site. Sa mise en place sera progressive et contiendra essentiellement des données techniques. Pourquoi? Parce que je suis administrateur et comme tout administrateur, je réutilise les briques que j&amp;rsquo;ai déjà utilisé. Par conséquent, ce site contiendra des exemples de configuration de logiciels, des infrastructures, des liens et autre idées. Ce site se complètera avec le temps.&lt;/p&gt;
+
+&lt;p&gt;Bonne navigation.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

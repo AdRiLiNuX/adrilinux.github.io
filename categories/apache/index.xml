@@ -1,0 +1,148 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apache on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/apache/</link>
+    <description>Recent content in apache on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Thu, 26 May 2011 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/apache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gestion du cache avec Apache</title>
+      <link>https://www.reslinger.net/2011/05/gestion-du-cache-avec-apache/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/05/gestion-du-cache-avec-apache/</guid>
+      <description>&lt;p&gt;Après l&amp;rsquo;optimisation d&amp;rsquo;Apache par la compression de la sortie, nous avons aussi la possibilité de fixer les valeurs pour le cache du navigateur client. De ce fait, dès le second click de souris du visiteur, le nombre de requêtes sur le serveur chutera et soulagera d&amp;rsquo;autant le serveur.&lt;/p&gt;
+
+&lt;p&gt;La configuration du cache passe simplement par l&amp;rsquo;ajout du bloque suivant dans le fichier httpd.conf:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Turn on Expires and set default to 0
+ExpiresActive On
+ExpiresDefault A0
+# Set up caching on media files for 1 year (forever?)
+&amp;lt;FilesMatch &amp;quot;\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$&amp;quot;&amp;gt;
+ExpiresDefault A29030400
+Header append Cache-Control &amp;quot;public&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Set up caching on media files for 1 week
+&amp;lt;FilesMatch &amp;quot;\.(gif|jpg|jpeg|png|swf|js|css)$&amp;quot;&amp;gt;
+ExpiresDefault A604800
+Header append Cache-Control &amp;quot;public&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Set up 2 Hour caching on commonly updated files
+&amp;lt;FilesMatch &amp;quot;\.(xml|txt|html)$&amp;quot;&amp;gt;
+ExpiresDefault A7200
+Header append Cache-Control &amp;quot;proxy-revalidate&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+# Force no caching for dynamic files
+&amp;lt;FilesMatch &amp;quot;\.(php|cgi|pl|htm)$&amp;quot;&amp;gt;
+ExpiresActive Off
+Header set Cache-Control &amp;quot;private, no-cache, no-store, proxy-revalidate, no-transform&amp;quot;
+Header set Pragma &amp;quot;no-cache&amp;quot;
+&amp;lt;/FilesMatch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Voir aussi &lt;a href=&#34;http://www.askapache.com/htaccess/speed-up-your-site-with-caching-and-cache-control.html&#34;&gt;ce lien&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Optimisation Apache par compression</title>
+      <link>https://www.reslinger.net/2011/01/optimisation-apache-par-compression/</link>
+      <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2011/01/optimisation-apache-par-compression/</guid>
+      <description>&lt;p&gt;Aujourd&amp;rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à  transférer , la bande passante s&amp;rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).&lt;/p&gt;
+
+&lt;p&gt;Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&amp;rsquo;apache. S&amp;rsquo;ils sont présent, nous n&amp;rsquo;avons qu&amp;rsquo;un peu de configuration à  faire.&lt;/p&gt;
+
+&lt;p&gt;Dans le répertoire conf.d, il faut créé (ou modifier) le fichier mod_deflate.conf pour y inclure le contenu suivant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Location /&amp;gt;
+# Ajoute un filtre
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+# Ne pas compresser les images
+SetEnvIfNoCase Request_URI \
+\.(?:gif|jpe?g|png)$ no-gzip dont-vary
+Header append Vary User-Agent env=!dont-vary
+&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ensuite, il ne reste plus qu&amp;rsquo;à  ajouter la ligne:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SetOutputFilter DEFLATE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dans chacuns des vhosts où l&amp;rsquo;on veut activer la compression des pages.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>exemple de conf apache &#43; mod_proxy &#43; awstat</title>
+      <link>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</link>
+      <pubDate>Tue, 14 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net
+&amp;lt;VirtualHost *:80&amp;gt;
+    ServerName www.mon-site.fr
+    ProxyRequests Off
+    ##ProxyPreserveHost Off|On
+    #Header add Set-Cookie &amp;quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&amp;quot; env=BALANCER_ROUTE_CHANGED
+    &amp;lt;Proxy balancer://mycluster&amp;gt;
+        BalancerMember http://www1.mon-site.fr/
+        ##BalancerMember http://192.168.1.xxx:80
+        #BalancerMember http:// route=1
+        #BalancerMember http:// route=2
+        #ProxySet stickysession=ROUTEID
+    &amp;lt;/Proxy&amp;gt;
+    &amp;lt;Proxy balancer://static&amp;gt;
+        BalancerMember http://static.mon-site.fr/
+    &amp;lt;/Proxy&amp;gt;
+        ProxyPass /images/ balancer://static/images/
+        ProxyPassReverse /images/ balancer://static/images/
+        ProxyPass /include/ balancer://static/include/
+        ProxyPassReverse /include/ balancer://static/include/
+        ProxyPass /script/ balancer://static/script/
+        ProxyPassReverse /script/ balancer://static/script/
+        ProxyPass / balancer://mycluster
+        ProxyPassReverse / balancer://mycluster
+    &amp;lt;/VirtualHost&amp;gt;
+    # SSLProxyEngine On
+    # ProxyPass /wp-admin !
+    # ProxyPass / https://www.site.net/
+    # ProxyPassReverse / https://www.site.net/
+    # ProxyRequests off
+    # ProxyReceiveBufferSize 8192
+    # ProxyIOBufferSize 262144
+    #
+    # Directives to allow use of AWStats as a CGI
+    #
+    Alias /awstatsclasses &amp;quot;/usr/local/awstats/wwwroot/classes/&amp;quot;
+    Alias /awstatscss &amp;quot;/usr/local/awstats/wwwroot/css/&amp;quot;
+    Alias /awstatsicons &amp;quot;/usr/local/awstats/wwwroot/icon/&amp;quot;
+    ScriptAlias /awstats/ &amp;quot;/usr/local/awstats/wwwroot/cgi-bin/&amp;quot;
+    #
+    # This is to permit URL access to scripts/files in AWStats directory.
+    #
+    &amp;lt;Directory &amp;quot;/usr/local/awstats/wwwroot&amp;quot;&amp;gt;
+        Options None
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from xx.xx.xx.xx
+    &amp;lt;/Directory&amp;gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
