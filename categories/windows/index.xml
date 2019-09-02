@@ -74,7 +74,7 @@
 &lt;pre&gt;&lt;code&gt;plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://www.reslinger.net/img/Putty_confproxy.png&#34; alt=&#34;Putty_confproxy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Putty_confproxy.png&#34; alt=&#34;Putty_confproxy&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
