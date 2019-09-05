@@ -38,7 +38,7 @@
 
 <meta itemprop="datePublished" content="2019-09-03T08:51:19&#43;02:00" />
 <meta itemprop="dateModified" content="2019-09-03T08:51:19&#43;02:00" />
-<meta itemprop="wordCount" content="171">
+<meta itemprop="wordCount" content="343">
 
 
 
@@ -111,6 +111,35 @@
 <p>Je passerai volontairement sur <a href="https://gohugo.io/getting-started/installing">l&rsquo;installation</a> et la <a href="https://gohugo.io/getting-started/quick-start/">création d&rsquo;un premier site</a> qui sont bien documentés.</p>
 
 <p>L&rsquo;article du jour concerne le déploiement continu (alias CD) du site sur <a href="https://about.gitlab.com/product/pages/">Gitlab Pages</a> et <a href="https://pages.github.com/">Github Page</a> depuis Gitlab CI.</p>
+
+<p>Pour un déploiement simple sur Gitlab, il n&rsquo;y a pas grand chose à faire pour que ça fonctionne. L&rsquo;exemple de .gitlab-ci.yml proposé sur le <a href="https://gohugo.io/hosting-and-deployment/hosting-on-gitlab/">site de hugo</a> fonctionne parfaitement.</p>
+
+<p>Pour un déploiement en simultané sur Github, il va nous faloir générer une pair de clé ssh dédiée pour l&rsquo;opération. La commande suivante devrait nous permettre d&rsquo;y parvenir :</p>
+
+<pre><code>ssh-keygen -t ed25519 -b 256 -f github
+</code></pre>
+
+<p>Le contenu de la clé publique sera utiliser pour créer une nouvelle clé de déploiement:</p>
+
+<p><img src="Github-ssh.png" alt="Ajout d'une clé dans un projet Github" /></p>
+
+<p>rajouter quelques lignes dans la section script pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
+Ça nous donne ceci:</p>
+
+<pre><code>pages:
+    script:
+    - mkdir -m 700 ~/.ssh; echo &quot;$GITHUB_KEY&quot; &gt; ~/.ssh/id_ed25519; chmod 600 ~/.ssh/id_ed25519; ssh-keyscan -t rsa github.com &gt;&gt; ~/.ssh/known_hosts
+    - git clone git@github.com:AdRiLiNuX/adrilinux.github.io.git public
+    - rm -fr public/*
+    - hugo
+    - git config --global user.email &quot;$MY_EMAIL&quot;; git config --global user.name &quot;$MY_NAME&quot;
+    - cd public; git add -A; git commit -m &quot;Auto update&quot;; git push --force
+    artifacts:
+        paths:
+        - public
+    only:
+    - master
+</code></pre>
 <ul class="pa0">
   
 </ul>

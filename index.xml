@@ -23,6 +23,35 @@
 &lt;p&gt;Je passerai volontairement sur &lt;a href=&#34;https://gohugo.io/getting-started/installing&#34;&gt;l&amp;rsquo;installation&lt;/a&gt; et la &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;création d&amp;rsquo;un premier site&lt;/a&gt; qui sont bien documentés.&lt;/p&gt;
 
 &lt;p&gt;L&amp;rsquo;article du jour concerne le déploiement continu (alias CD) du site sur &lt;a href=&#34;https://about.gitlab.com/product/pages/&#34;&gt;Gitlab Pages&lt;/a&gt; et &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Page&lt;/a&gt; depuis Gitlab CI.&lt;/p&gt;
+
+&lt;p&gt;Pour un déploiement simple sur Gitlab, il n&amp;rsquo;y a pas grand chose à faire pour que ça fonctionne. L&amp;rsquo;exemple de .gitlab-ci.yml proposé sur le &lt;a href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-gitlab/&#34;&gt;site de hugo&lt;/a&gt; fonctionne parfaitement.&lt;/p&gt;
+
+&lt;p&gt;Pour un déploiement en simultané sur Github, il va nous faloir générer une pair de clé ssh dédiée pour l&amp;rsquo;opération. La commande suivante devrait nous permettre d&amp;rsquo;y parvenir :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t ed25519 -b 256 -f github
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le contenu de la clé publique sera utiliser pour créer une nouvelle clé de déploiement:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Github-ssh.png&#34; alt=&#34;Ajout d&#39;une clé dans un projet Github&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;rajouter quelques lignes dans la section script pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
+Ça nous donne ceci:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pages:
+    script:
+    - mkdir -m 700 ~/.ssh; echo &amp;quot;$GITHUB_KEY&amp;quot; &amp;gt; ~/.ssh/id_ed25519; chmod 600 ~/.ssh/id_ed25519; ssh-keyscan -t rsa github.com &amp;gt;&amp;gt; ~/.ssh/known_hosts
+    - git clone git@github.com:AdRiLiNuX/adrilinux.github.io.git public
+    - rm -fr public/*
+    - hugo
+    - git config --global user.email &amp;quot;$MY_EMAIL&amp;quot;; git config --global user.name &amp;quot;$MY_NAME&amp;quot;
+    - cd public; git add -A; git commit -m &amp;quot;Auto update&amp;quot;; git push --force
+    artifacts:
+        paths:
+        - public
+    only:
+    - master
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
