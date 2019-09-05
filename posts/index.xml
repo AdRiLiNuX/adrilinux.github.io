@@ -5,10 +5,26 @@
     <description>Recent content in Posts on AdRiLiNuX&#39;s web site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2019 08:51:19 +0200</lastBuildDate>
     
         <atom:link href="https://www.reslinger.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Déploiement d&#39;un site Hugo sur Gitlab et Github</title>
+      <link>https://www.reslinger.net/2019/09/d%C3%A9ploiement-dun-site-hugo-sur-gitlab-et-github/</link>
+      <pubDate>Tue, 03 Sep 2019 08:51:19 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/2019/09/d%C3%A9ploiement-dun-site-hugo-sur-gitlab-et-github/</guid>
+      <description>&lt;p&gt;On y pense pas toujours, mais le temps de maintenance d&amp;rsquo;un site peu vite prendre du temps. Bien qu&amp;rsquo;avec un Wordpress ça se fasse simplement, il faut toujours suivre son site. L&amp;rsquo;avantage des générateurs de site statiques est que la maintenance disparait. Alors comme beaucoup, &lt;a href=&#34;https://www.reslinger.net/2017/10/hello-website-powered-by-lektor/&#34;&gt;j&amp;rsquo;en ai adopté un il y a 2 ans&lt;/a&gt; environ. Tout fonctionneait parfaitement même si le thème par défaut que je n&amp;rsquo;avais pas modifier ne me plaisais pas trop.&lt;/p&gt;
+
+&lt;p&gt;Aujourd&amp;rsquo;hui, je vais vous parler de &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Ce générateur de site static est à la mode mais ce n&amp;rsquo;est pas la seule raison de mon changement. Je suis un peu alergique au modification d&amp;rsquo;un système d&amp;rsquo;exploitation autrement que par son gestionnaire de paquet (à la rigueur j&amp;rsquo;accepte la compilation de source installé dans /usr/local/). J&amp;rsquo;ai donc exclu lektor à cause de pip.&lt;/p&gt;
+
+&lt;p&gt;Je passerai volontairement sur &lt;a href=&#34;https://gohugo.io/getting-started/installing&#34;&gt;l&amp;rsquo;installation&lt;/a&gt; et la &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;création d&amp;rsquo;un premier site&lt;/a&gt; qui sont bien documentés.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;article du jour concerne le déploiement continu (alias CD) du site sur &lt;a href=&#34;https://about.gitlab.com/product/pages/&#34;&gt;Gitlab Pages&lt;/a&gt; et &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Page&lt;/a&gt; depuis Gitlab CI.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Chiffrer son homedir sous Ubuntu</title>
