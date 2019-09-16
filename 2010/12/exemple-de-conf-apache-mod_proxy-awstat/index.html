@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | exemple de conf apache &#43; mod_proxy &#43; awstat</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="generator" content="Hugo 0.57.2" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -29,9 +29,8 @@
 <meta property="og:description" content="RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ ProxyPass / balancer://mycluster ProxyPassReverse / balancer://mycluster &lt;/VirtualHost&gt; # SSLProxyEngine On # ProxyPass /wp-admin ! # ProxyPass / https://www." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/" />
-<meta property="article:published_time" content="2010-12-14T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2010-12-14T00:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2010-12-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-12-14T00:00:00+00:00" />
 <meta itemprop="name" content="exemple de conf apache &#43; mod_proxy &#43; awstat">
 <meta itemprop="description" content="RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net &lt;VirtualHost *:80&gt; ServerName www.mon-site.fr ProxyRequests Off ##ProxyPreserveHost Off|On #Header add Set-Cookie &quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&quot; env=BALANCER_ROUTE_CHANGED &lt;Proxy balancer://mycluster&gt; BalancerMember http://www1.mon-site.fr/ ##BalancerMember http://192.168.1.xxx:80 #BalancerMember http:// route=1 #BalancerMember http:// route=2 #ProxySet stickysession=ROUTEID &lt;/Proxy&gt; &lt;Proxy balancer://static&gt; BalancerMember http://static.mon-site.fr/ &lt;/Proxy&gt; ProxyPass /images/ balancer://static/images/ ProxyPassReverse /images/ balancer://static/images/ ProxyPass /include/ balancer://static/include/ ProxyPassReverse /include/ balancer://static/include/ ProxyPass /script/ balancer://static/script/ ProxyPassReverse /script/ balancer://static/script/ ProxyPass / balancer://mycluster ProxyPassReverse / balancer://mycluster &lt;/VirtualHost&gt; # SSLProxyEngine On # ProxyPass /wp-admin ! # ProxyPass / https://www.">
 
