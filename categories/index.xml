@@ -5,10 +5,28 @@
     <description>Recent content in Categories on AdRiLiNuX&#39;s web site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2019 08:51:19 +0200</lastBuildDate>
     
         <atom:link href="https://www.reslinger.net/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CI-CD</title>
+      <link>https://www.reslinger.net/categories/ci-cd/</link>
+      <pubDate>Tue, 03 Sep 2019 08:51:19 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/ci-cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://www.reslinger.net/categories/web/</link>
+      <pubDate>Tue, 03 Sep 2019 08:51:19 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/web/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>securité</title>
