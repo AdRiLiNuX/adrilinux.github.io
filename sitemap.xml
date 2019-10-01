@@ -4,12 +4,32 @@
   
   <url>
     <loc>https://www.reslinger.net/</loc>
-    <lastmod>2019-09-03T08:51:19+02:00</lastmod>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.reslinger.net/categories/</loc>
-    <lastmod>2019-09-03T08:51:19+02:00</lastmod>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/container/</loc>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/deploiement-traefik-2-swarm/</loc>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/swarm/</loc>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.reslinger.net/categories/traefik/</loc>
+    <lastmod>2019-09-30T18:56:44+02:00</lastmod>
   </url>
   
   <url>

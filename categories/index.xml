@@ -5,10 +5,37 @@
     <description>Recent content in Categories on AdRiLiNuX&#39;s web site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 03 Sep 2019 08:51:19 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 18:56:44 +0200</lastBuildDate>
     
         <atom:link href="https://www.reslinger.net/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>container</title>
+      <link>https://www.reslinger.net/categories/container/</link>
+      <pubDate>Mon, 30 Sep 2019 18:56:44 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swarm</title>
+      <link>https://www.reslinger.net/categories/swarm/</link>
+      <pubDate>Mon, 30 Sep 2019 18:56:44 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/swarm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>traefik</title>
+      <link>https://www.reslinger.net/categories/traefik/</link>
+      <pubDate>Mon, 30 Sep 2019 18:56:44 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/categories/traefik/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CI-CD</title>

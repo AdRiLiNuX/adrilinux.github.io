@@ -1,0 +1,100 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>container on AdRiLiNuX&#39;s web site</title>
+    <link>https://www.reslinger.net/categories/container/</link>
+    <description>Recent content in container on AdRiLiNuX&#39;s web site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 30 Sep 2019 18:56:44 +0200</lastBuildDate>
+    
+        <atom:link href="https://www.reslinger.net/categories/container/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Déploiement de Traefik 2.0 sur docker swarm</title>
+      <link>https://www.reslinger.net/deploiement-traefik-2-swarm/</link>
+      <pubDate>Mon, 30 Sep 2019 18:56:44 +0200</pubDate>
+      
+      <guid>https://www.reslinger.net/deploiement-traefik-2-swarm/</guid>
+      <description>&lt;p&gt;Traefik 2.0 est sortie en version finale il y a quelques jours et j&amp;rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&amp;rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.&lt;/p&gt;
+
+&lt;p&gt;Un trucs que je n&amp;rsquo;avais pas compris tout de suite, c&amp;rsquo;est qu&amp;rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer. Et ça c&amp;rsquo;est super cool.&lt;/p&gt;
+
+&lt;p&gt;Bien que l&amp;rsquo;on puisse faire des appels à des middlewares déclarés dans d&amp;rsquo;autres providers, je n&amp;rsquo;ai pas réussi à utiliser le provider file depuis le provider dynamique docker (un nouveau middlerware vide était créé et surchargeait celui que j&amp;rsquo;avais défini en fichier).&lt;/p&gt;
+
+&lt;p&gt;Bien, déployons et commençons donc par les middlewares réutilisables. Étant donné qu&amp;rsquo;il ne servent à rien si traefik n&amp;rsquo;est pas présent, je les déclare donc dans le docker-compose de traefik :&lt;/p&gt;
+
+&lt;p&gt;Le premier middleware est utile pour la redirection http vers https&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        - &amp;quot;traefik.http.middlewares.https_redirect.redirectscheme.scheme=https&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le second middleware est une authentification basique, utile pour une petite infrastructure / équipe pour sécuriser rapidement les sites déployé&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        - &amp;quot;traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$kr4VIpmn$$LDCgCQOlcqlOovSTa/0SD1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le troisième est la compression, avec ses avantages et ses inconvénients ( à utiliser au besoin )&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        - &amp;quot;traefik.http.middlewares.compress.compress=true&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et pour le dernier du jour, on peut définir un groupe d&amp;rsquo;hentête de sécurité ( à adapter en fonction des besions )&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        - &amp;quot;traefik.http.middlewares.security-headers.headers.browserXssFilter=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.contentTypeNosniff=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.forceSTSHeader=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.stsIncludeSubdomains=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.stsPreload=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.stsSeconds=15768000&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.frameDeny=true&amp;quot;
+        - &amp;quot;traefik.http.middlewares.security-headers.headers.sslRedirect=true&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Avant de passer aux services, nous pouvons aussi personnaliser la configuration TLS via le provider file en créant un fichier avec, par exemple, le contenu suivant :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    tls:
+      options:
+        default:
+          sniStrict: true
+          minVersion: VersionTLS12
+          cipherSuites:
+            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nous pouvons maintenant déployer des services en utilisant nos middlewares. Occupons nous du dashboard de traefik, après tout nous sommes dans le docker-compose de traefik.&lt;/p&gt;
+
+&lt;p&gt;D&amp;rsquo;abord on active le service et on indique sur quel réseau on écoute&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    - &amp;quot;traefik.enable=true&amp;quot;
+    - &amp;quot;traefik.docker.network=traefik&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Après on crée une entrée pour le protocole http en utilisant nos midlewares (un jour je trouverai le moyen de faire un vhost http générique qui redirigera sur https sans avoir à un définir pour chaque service )&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    - &amp;quot;traefik.http.routers.traefik-insecure.entrypoints=http&amp;quot;
+    - &amp;quot;traefik.http.routers.traefik-insecure.rule=Host(`traefik.example.com`)&amp;quot;
+    - &amp;quot;traefik.http.routers.traefik-insecure.middlewares=https_redirect,compress,security-headers&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enfin on crée une entrée pour le protocole https&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    - &amp;quot;traefik.http.routers.traefik.entrypoints=https&amp;quot;
+    - &amp;quot;traefik.http.routers.traefik.tls=true&amp;quot;
+    - &amp;quot;traefik.http.routers.boot.tls.options=default&amp;quot;
+    - &amp;quot;traefik.http.routers.traefik.rule=Host(`traefik.example.com`)&amp;quot;
+    - &amp;quot;traefik.http.services.traefik.loadbalancer.server.port=8080&amp;quot;
+    - &amp;quot;traefik.http.routers.traefik.middlewares=auth,compress,security-headers&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Une fois le tout déployé, on peut aller tester le résultat sur &lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34;&gt;ssllabs&lt;/a&gt; et &lt;a href=&#34;https://securityheaders.com/&#34;&gt;securityheaders&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Voici mon résultat sur ssllabs:
+&lt;img src=&#34;ssllabs-result.png&#34; alt=&#34;Résultat SSLLabs&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
