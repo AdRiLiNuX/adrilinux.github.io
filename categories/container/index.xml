@@ -12,10 +12,10 @@
     
     <item>
       <title>Déploiement de Traefik 2.0 sur docker swarm</title>
-      <link>https://www.reslinger.net/deploiement-traefik-2-swarm/</link>
+      <link>https://www.reslinger.net/2019/09/d%C3%A9ploiement-de-traefik-2.0-sur-docker-swarm/</link>
       <pubDate>Mon, 30 Sep 2019 18:56:44 +0200</pubDate>
       
-      <guid>https://www.reslinger.net/deploiement-traefik-2-swarm/</guid>
+      <guid>https://www.reslinger.net/2019/09/d%C3%A9ploiement-de-traefik-2.0-sur-docker-swarm/</guid>
       <description>&lt;p&gt;Traefik 2.0 est sortie en version finale il y a quelques jours et j&amp;rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&amp;rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.&lt;/p&gt;
 
 &lt;p&gt;Un trucs que je n&amp;rsquo;avais pas compris tout de suite, c&amp;rsquo;est qu&amp;rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer. Et ça c&amp;rsquo;est super cool.&lt;/p&gt;
@@ -91,8 +91,9 @@
 
 &lt;p&gt;Une fois le tout déployé, on peut aller tester le résultat sur &lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34;&gt;ssllabs&lt;/a&gt; et &lt;a href=&#34;https://securityheaders.com/&#34;&gt;securityheaders&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Voici mon résultat sur ssllabs:
-&lt;img src=&#34;ssllabs-result.png&#34; alt=&#34;Résultat SSLLabs&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Voici mon résultat sur ssllabs:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;ssllabs-result.png&#34; alt=&#34;Résultat SSLLabs&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

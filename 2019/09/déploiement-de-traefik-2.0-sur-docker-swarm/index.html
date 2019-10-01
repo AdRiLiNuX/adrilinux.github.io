@@ -29,7 +29,7 @@
 <meta property="og:description" content="Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.
 Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.reslinger.net/deploiement-traefik-2-swarm/" />
+<meta property="og:url" content="https://www.reslinger.net/2019/09/d%C3%A9ploiement-de-traefik-2.0-sur-docker-swarm/" />
 <meta property="article:published_time" content="2019-09-30T18:56:44+02:00" />
 <meta property="article:modified_time" content="2019-09-30T18:56:44+02:00" />
 <meta itemprop="name" content="Déploiement de Traefik 2.0 sur docker swarm">
@@ -54,6 +54,8 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
   <body class="ma0 avenir bg-near-white">
 
     
+   
+  
 
   <header>
     <div class="bg-black">
@@ -86,20 +88,25 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
   </header>
 
 
+
     <main class="pb7" role="main">
       
-  <div class="flex-l mt2 mw8 center">
-    <article class="center cf pv5 ph3 ph4-ns mw7">
-      <header>
-        <p class="f6 b helvetica tracked">
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
           
-        </p>
-        <h1 class="f1">
-          Déploiement de Traefik 2.0 sur docker swarm
-        </h1>
-      </header>
-      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
-        <p>Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.</p>
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Déploiement de Traefik 2.0 sur docker swarm</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-09-30T18:56:44&#43;02:00">September 30, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.</p>
 
 <p>Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer. Et ça c&rsquo;est super cool.</p>
 
@@ -174,12 +181,26 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
 
 <p>Une fois le tout déployé, on peut aller tester le résultat sur <a href="https://www.ssllabs.com/ssltest/">ssllabs</a> et <a href="https://securityheaders.com/">securityheaders</a>.</p>
 
-<p>Voici mon résultat sur ssllabs:
-<img src="ssllabs-result.png" alt="Résultat SSLLabs" /></p>
+<p>Voici mon résultat sur ssllabs:</p>
 
+<p><img src="ssllabs-result.png" alt="Résultat SSLLabs" /></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
       </div>
-    </article>
-  </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
