@@ -17,27 +17,18 @@
       
       <guid>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</guid>
       <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-
-&lt;p&gt;J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&amp;rsquo;était suffisant.
+&lt;p&gt;J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&#39;était suffisant.
 La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&amp;rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).&lt;/p&gt;
-
 &lt;p&gt;Pour l&amp;rsquo;installation des paquets :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;apt install ecryptfs-utils libpam-mount
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Pour l&amp;rsquo;encryption du homedir :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u $MON_USER
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u mon_user
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;L&amp;rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .&lt;/p&gt;
-
 &lt;p&gt;Source utilisée: &lt;a href=&#34;https://doc.ubuntu-fr.org/ecryptfs&#34;&gt;ecryptfs sur ubuntu-fr&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -49,19 +40,13 @@ La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentielle
       
       <guid>https://www.reslinger.net/2014/12/console-virsh/</guid>
       <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-
 &lt;p&gt;Aujourd&amp;rsquo;hui, rien de passionnant, juste un petit mémo pour l&amp;rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.&lt;/p&gt;
-
 &lt;p&gt;Pour entrer :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;virsh console VM
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Pour sortir&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;Ctrl + ]
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.&lt;/p&gt;
 </description>
     </item>
@@ -73,11 +58,8 @@ La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentielle
       
       <guid>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</guid>
       <description>&lt;p&gt;Bonjour tout le monde.&lt;/p&gt;
-
-&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&amp;rsquo;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
-
+&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&#39;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
 &lt;p&gt;Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans &amp;ldquo;HKEY_LOCAL_MACHINE\Software\BrowserChoice&amp;rdquo; du nom de &amp;ldquo;Enable&amp;rdquo;. Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.&lt;/p&gt;
-
 &lt;p&gt;Ensuite, la machine démarre plus vite 🙂&lt;/p&gt;
 </description>
     </item>

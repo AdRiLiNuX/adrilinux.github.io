@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | Chiffrer son homedir sous Ubuntu</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -27,27 +27,24 @@
 
     <meta property="og:title" content="Chiffrer son homedir sous Ubuntu" />
 <meta property="og:description" content="Bonjour,
-J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&rsquo;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire)." />
+J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&#39;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/" />
 <meta property="article:published_time" content="2018-02-06T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-02-06T00:00:00+00:00" />
 <meta itemprop="name" content="Chiffrer son homedir sous Ubuntu">
 <meta itemprop="description" content="Bonjour,
-J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&rsquo;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).">
-
-
+J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&#39;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).">
 <meta itemprop="datePublished" content="2018-02-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-02-06T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="165">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Chiffrer son homedir sous Ubuntu"/>
 <meta name="twitter:description" content="Bonjour,
-J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&rsquo;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire)."/>
+J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&#39;était suffisant. La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire)."/>
 
   </head>
 
@@ -107,27 +104,18 @@ J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je vou
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Bonjour,</p>
-
-<p>J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&rsquo;était suffisant.
+<p>J&rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&rsquo;avais pas fait durant l&rsquo;installation du système. Pourquoi ? Simplement par ce que j&rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c'était suffisant.
 La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).</p>
-
 <p>Pour l&rsquo;installation des paquets :</p>
-
 <pre><code>apt install ecryptfs-utils libpam-mount
 </code></pre>
-
 <p>Pour l&rsquo;encryption du homedir :</p>
-
 <pre><code>ecryptfs-migrate-home -u $MON_USER
 </code></pre>
-
 <p>Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :</p>
-
 <pre><code>ecryptfs-migrate-home -u mon_user
 </code></pre>
-
 <p>L&rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .</p>
-
 <p>Source utilisée: <a href="https://doc.ubuntu-fr.org/ecryptfs">ecryptfs sur ubuntu-fr</a></p>
 <ul class="pa0">
   
@@ -153,7 +141,7 @@ La machine que j&rsquo;ai voulu modifier est en fait une machine potentiellement
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 

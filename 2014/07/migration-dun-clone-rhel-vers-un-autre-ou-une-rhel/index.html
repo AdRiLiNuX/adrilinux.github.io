@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | Migration d&#39;un clone RHEL vers un autre (ou une RHEL)</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -37,16 +37,13 @@ C&rsquo;est bien beau, tout le monde était en version 6." />
 <meta itemprop="description" content="Bonjour,
 Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.
 C&rsquo;est bien beau, tout le monde était en version 6.">
-
-
 <meta itemprop="datePublished" content="2014-07-21T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2014-07-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="173">
+<meta itemprop="wordCount" content="172">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migration d&#39;un clone RHEL vers un autre (ou une RHEL)"/>
 <meta name="twitter:description" content="Bonjour,
 Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.
@@ -110,15 +107,10 @@ C&rsquo;est bien beau, tout le monde était en version 6."/>
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Bonjour,</p>
-
 <p>Dans la petite famille des clones RedHat, CentOS est la distribution la plus connue. Pourtant, pendant un certain temps, après la sortie de la version 6 de Redhat, CentOS à été fortement critiqué pour ses releases tardives. A ce moment là, je suis aller tester d&rsquo;autre distribution. Quelque mois plus tard, je me suis retrouvé avec une ClearOS et une RedHat en production, à coté de mes ScientificLinux.</p>
-
 <p>C&rsquo;est bien beau, tout le monde était en version 6.x, mais ça fesait 3 dépôts à géré, dont un qui n&rsquo;a jamais reçu de mise à jour. Soit. Les distributions étant compatible entre elle, une migration devait être possible.</p>
-
 <p>Pour ce faire, j&rsquo;ai utilisé ce <a href="http://marcet.technofil.fr/2011/09/22/migrer-de-centos-vers-scientific-linux/">premier lien</a> et ce <a href="http://blog.famillecollet.com/post/2010/04/15/Migration-de-CentOS-5.4-vers-RHEL-5.5">second lien</a>.</p>
-
 <p>Voici pour info ce que j&rsquo;ai tapé:</p>
-
 <pre><code>wget http://ftp.scientificlinux.org/linux/scientific/6.1/x86_64/os/Packages/{redhat-logos-60.0.14-2.sl6.4.noarch.rpm,redhat-lsb-4.0-3.el6.x86_64.rpm,redhat-lsb-graphics-4.0-3.el6.x86_64.rpm,redhat-lsb-printing-4.0-3.el6.x86_64.rpm,sl-indexhtml-6-2.sl6.5.noarch.rpm,sl-release-6.1-2.x86_64.rpm,sl-release-notes-6.1-1.noarch.rpm,yum-3.2.29-17.el6.noarch.rpm,yum-metadata-parser-1.1.2-16.el6.x86_64.rpm,yum-rhn-plugin-0.9.1-26.el6.noarch.rpm,yum-utils-1.1.30-6.el6.noarch.rpm}
 rpm -e --nodeps $(rpm -qa clearos\* redhat\* centos\* yum\* | sort)
 rpm -ivh *
@@ -126,8 +118,7 @@ yum clean all &amp;&amp; yum reinstall $(rpm -qa --qf &quot;%{NAME} %{VENDOR}\n&
 yum update
 yum clean all &amp;&amp; yum --releasever=6x update
 </code></pre>
-
-<p>&nbsp;</p>
+<p> </p>
 <ul class="pa0">
   
 </ul>
@@ -152,7 +143,7 @@ yum clean all &amp;&amp; yum --releasever=6x update
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 

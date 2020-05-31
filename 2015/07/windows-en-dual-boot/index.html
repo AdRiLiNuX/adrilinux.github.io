@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | Windows en dual boot</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,16 +35,13 @@ J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je s
 <meta itemprop="name" content="Windows en dual boot">
 <meta itemprop="description" content="Bonjour,
 J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&rsquo;une horloge BIOS en UTC.">
-
-
 <meta itemprop="datePublished" content="2015-07-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2015-07-01T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="180">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows en dual boot"/>
 <meta name="twitter:description" content="Bonjour,
 J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&rsquo;une horloge BIOS en UTC."/>
@@ -107,26 +104,17 @@ J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je s
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Bonjour,</p>
-
 <p>J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&rsquo;une horloge BIOS en UTC.</p>
-
 <p>Voici les différentes étapes :</p>
-
 <p>Configuration de la base de regisre pour avoir l&rsquo;heure bios en utc :</p>
-
 <pre><code>reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
 </code></pre>
-
 <p>Synchroniser l&rsquo;heure :</p>
-
 <pre><code>w32tm /config /update
 </code></pre>
-
 <p>Désactiver le service Windows Time service qui écrit l&rsquo;heure à chaque arrêt du système sans regarder le registre :</p>
-
 <pre><code>sc config w32time start= disabled
 </code></pre>
-
 <p>Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.</p>
 <ul class="pa0">
   
@@ -152,7 +140,7 @@ J&rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je s
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 

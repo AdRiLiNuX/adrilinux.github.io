@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | Déploiement de Traefik 2.0 sur docker swarm</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,16 +35,13 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
 <meta itemprop="name" content="Déploiement de Traefik 2.0 sur docker swarm">
 <meta itemprop="description" content="Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.
 Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer.">
-
-
 <meta itemprop="datePublished" content="2019-09-30T18:56:44&#43;02:00" />
 <meta itemprop="dateModified" content="2019-09-30T18:56:44&#43;02:00" />
 <meta itemprop="wordCount" content="412">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Déploiement de Traefik 2.0 sur docker swarm"/>
 <meta name="twitter:description" content="Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.
 Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer."/>
@@ -107,30 +104,19 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Traefik 2.0 est sortie en version finale il y a quelques jours et j&rsquo;ai donc effectué la migration de ma configuration. Je savais que la configuration avait subie de gros changement, mais j&rsquo;ai quand même rencontrer quelques difficultées sur les points avancés.</p>
-
 <p>Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on peut utiliser les middleware à différents endroits, ce qui permet de ne pas dupliquer du code pour chaque service déployer. Et ça c&rsquo;est super cool.</p>
-
 <p>Bien que l&rsquo;on puisse faire des appels à des middlewares déclarés dans d&rsquo;autres providers, je n&rsquo;ai pas réussi à utiliser le provider file depuis le provider dynamique docker (un nouveau middlerware vide était créé et surchargeait celui que j&rsquo;avais défini en fichier).</p>
-
 <p>Bien, déployons et commençons donc par les middlewares réutilisables. Étant donné qu&rsquo;il ne servent à rien si traefik n&rsquo;est pas présent, je les déclare donc dans le docker-compose de traefik :</p>
-
 <p>Le premier middleware est utile pour la redirection http vers https</p>
-
 <pre><code>        - &quot;traefik.http.middlewares.https_redirect.redirectscheme.scheme=https&quot;
 </code></pre>
-
 <p>Le second middleware est une authentification basique, utile pour une petite infrastructure / équipe pour sécuriser rapidement les sites déployé</p>
-
 <pre><code>        - &quot;traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$kr4VIpmn$$LDCgCQOlcqlOovSTa/0SD1&quot;
 </code></pre>
-
 <p>Le troisième est la compression, avec ses avantages et ses inconvénients ( à utiliser au besoin )</p>
-
 <pre><code>        - &quot;traefik.http.middlewares.compress.compress=true&quot;
 </code></pre>
-
 <p>Et pour le dernier du jour, on peut définir un groupe d&rsquo;hentête de sécurité ( à adapter en fonction des besions )</p>
-
 <pre><code>        - &quot;traefik.http.middlewares.security-headers.headers.browserXssFilter=true&quot;
         - &quot;traefik.http.middlewares.security-headers.headers.contentTypeNosniff=true&quot;
         - &quot;traefik.http.middlewares.security-headers.headers.forceSTSHeader=true&quot;
@@ -140,9 +126,7 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
         - &quot;traefik.http.middlewares.security-headers.headers.frameDeny=true&quot;
         - &quot;traefik.http.middlewares.security-headers.headers.sslRedirect=true&quot;
 </code></pre>
-
 <p>Avant de passer aux services, nous pouvons aussi personnaliser la configuration TLS via le provider file en créant un fichier avec, par exemple, le contenu suivant :</p>
-
 <pre><code>    tls:
       options:
         default:
@@ -153,24 +137,17 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
             - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
             - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
 </code></pre>
-
 <p>Nous pouvons maintenant déployer des services en utilisant nos middlewares. Occupons nous du dashboard de traefik, après tout nous sommes dans le docker-compose de traefik.</p>
-
 <p>D&rsquo;abord on active le service et on indique sur quel réseau on écoute</p>
-
 <pre><code>    - &quot;traefik.enable=true&quot;
     - &quot;traefik.docker.network=traefik&quot;
 </code></pre>
-
 <p>Après on crée une entrée pour le protocole http en utilisant nos midlewares (un jour je trouverai le moyen de faire un vhost http générique qui redirigera sur https sans avoir à un définir pour chaque service )</p>
-
 <pre><code>    - &quot;traefik.http.routers.traefik-insecure.entrypoints=http&quot;
     - &quot;traefik.http.routers.traefik-insecure.rule=Host(`traefik.example.com`)&quot;
     - &quot;traefik.http.routers.traefik-insecure.middlewares=https_redirect,compress,security-headers&quot;
 </code></pre>
-
 <p>Enfin on crée une entrée pour le protocole https</p>
-
 <pre><code>    - &quot;traefik.http.routers.traefik.entrypoints=https&quot;
     - &quot;traefik.http.routers.traefik.tls=true&quot;
     - &quot;traefik.http.routers.boot.tls.options=default&quot;
@@ -178,12 +155,9 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
     - &quot;traefik.http.services.traefik.loadbalancer.server.port=8080&quot;
     - &quot;traefik.http.routers.traefik.middlewares=auth,compress,security-headers&quot;
 </code></pre>
-
 <p>Une fois le tout déployé, on peut aller tester le résultat sur <a href="https://www.ssllabs.com/ssltest/">ssllabs</a> et <a href="https://securityheaders.com/">securityheaders</a>.</p>
-
 <p>Voici mon résultat sur ssllabs:</p>
-
-<p><img src="ssllabs-result.png" alt="Résultat SSLLabs" /></p>
+<p><img src="ssllabs-result.png" alt="Résultat SSLLabs"></p>
 <ul class="pa0">
   
 </ul>
@@ -208,7 +182,7 @@ Un trucs que je n&rsquo;avais pas compris tout de suite, c&rsquo;est qu&rsquo;on
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 

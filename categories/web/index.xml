@@ -17,31 +17,19 @@
       
       <guid>https://www.reslinger.net/2019/09/d%C3%A9ploiement-dun-site-hugo-sur-gitlab-et-github/</guid>
       <description>&lt;p&gt;On y pense pas toujours, mais le temps de maintenance d&amp;rsquo;un site peu vite prendre du temps. Bien qu&amp;rsquo;avec un Wordpress ça se fasse simplement, il faut toujours suivre son site. L&amp;rsquo;avantage des générateurs de site statiques est que la maintenance disparait. Alors comme beaucoup aujourd&amp;rsquo;hui, &lt;a href=&#34;https://www.reslinger.net/2017/10/hello-website-powered-by-lektor/&#34;&gt;j&amp;rsquo;en ai adopté un il y a 2 ans&lt;/a&gt; environ. Tout fonctionneait parfaitement même si le thème par défaut que je n&amp;rsquo;avais pas modifier ne me plaisais pas trop.&lt;/p&gt;
-
 &lt;p&gt;Aujourd&amp;rsquo;hui, je vais vous parler de &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. Ce générateur de site static est à la mode mais ce n&amp;rsquo;est pas la seule raison de mon changement. Je suis un peu alergique au modification d&amp;rsquo;un système d&amp;rsquo;exploitation autrement que par son gestionnaire de paquet (à la rigueur j&amp;rsquo;accepte la compilation de source installé dans /usr/local/). J&amp;rsquo;ai donc exclu lektor à cause de pip.&lt;/p&gt;
-
 &lt;p&gt;Je passerai volontairement sur &lt;a href=&#34;https://gohugo.io/getting-started/installing&#34;&gt;l&amp;rsquo;installation&lt;/a&gt; et la &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;création d&amp;rsquo;un premier site&lt;/a&gt; qui sont bien documentés.&lt;/p&gt;
-
 &lt;p&gt;L&amp;rsquo;article du jour concerne le déploiement continu (alias CD) du site sur &lt;a href=&#34;https://about.gitlab.com/product/pages/&#34;&gt;Gitlab Pages&lt;/a&gt; et &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Page&lt;/a&gt; depuis Gitlab CI.&lt;/p&gt;
-
 &lt;p&gt;Pour un déploiement simple sur Gitlab, il n&amp;rsquo;y a pas grand chose à faire pour que ça fonctionne. L&amp;rsquo;exemple de .gitlab-ci.yml proposé sur le &lt;a href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-gitlab/&#34;&gt;site de hugo&lt;/a&gt; fonctionne parfaitement.&lt;/p&gt;
-
 &lt;p&gt;Pour un déploiement en simultané sur Github, il va nous faloir générer une pair de clé ssh dédiée pour l&amp;rsquo;opération. La commande suivante devrait nous permettre d&amp;rsquo;y parvenir :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;ssh-keygen -t ed25519 -b 256 -f github
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Le contenu de la clé publique sera utiliser pour créer une nouvelle clé de déploiement dans les préférences du projet Github :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;Github-ssh.png&#34; alt=&#34;Ajout d&#39;une clé dans un projet Github&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;Github-ssh.png&#34; alt=&#34;Ajout d&amp;rsquo;une clé dans un projet Github&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Le contenu de la clé privée sera, lui, utilisé comme variable dans l&amp;rsquo;intégration et livraison continue du projet Gitlab au coté de l&amp;rsquo;email et du login :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;Gitlab-CI-Variable.png&#34; alt=&#34;Ajout de la clé privée dans un projet Gitlab&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Maintenant il ne reste plus qu&amp;rsquo;à rajouter quelques lignes dans la section script du fichier .gitlab-ci.yml pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
+&lt;p&gt;&lt;img src=&#34;Gitlab-CI-Variable.png&#34; alt=&#34;Ajout de la clé privée dans un projet Gitlab&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Maintenant il ne reste plus qu&#39;à rajouter quelques lignes dans la section script du fichier .gitlab-ci.yml pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
 Cela nous donne quelque chose comme ceci:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;pages:
     script:
     - mkdir -m 700 ~/.ssh; echo &amp;quot;$GITHUB_KEY&amp;quot; &amp;gt; ~/.ssh/id_ed25519; chmod 600 ~/.ssh/id_ed25519; ssh-keyscan -t rsa github.com &amp;gt;&amp;gt; ~/.ssh/known_hosts
@@ -56,6 +44,7 @@ Cela nous donne quelque chose comme ceci:&lt;/p&gt;
     only:
     - master
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Edit: La synchronisation fonctionne bien et restera en l&#39;état pour le moment, github gère son certificat let&amp;rsquo;s encrypt lui même, ce qui ne permet pas de faire du loadbalancing pour le moment.&lt;/p&gt;
 </description>
     </item>
     

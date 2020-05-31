@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | Optimisation Apache par compression</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,16 +35,13 @@ Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mo
 <meta itemprop="name" content="Optimisation Apache par compression">
 <meta itemprop="description" content="Aujourd&rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à transférer , la bande passante s&rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).
 Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&rsquo;apache. S&rsquo;ils sont présent, nous n&rsquo;avons qu&rsquo;un peu de configuration à faire.">
-
-
 <meta itemprop="datePublished" content="2011-01-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2011-01-24T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="154">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Optimisation Apache par compression"/>
 <meta name="twitter:description" content="Aujourd&rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à transférer , la bande passante s&rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).
 Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&rsquo;apache. S&rsquo;ils sont présent, nous n&rsquo;avons qu&rsquo;un peu de configuration à faire."/>
@@ -107,11 +104,8 @@ Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mo
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Aujourd&rsquo;hui, un petit peu de configuration dans Apache pour activé la compression des pages. La compression des pages permet de réduire la quantité de données à  transférer , la bande passante s&rsquo;en retrouve soulagée ainsi que le temps de transfert (normale, il y a moins de données).</p>
-
 <p>Pour y arriver, il faut contrôler la présence des modules mod_deflate.so et mod_headers.so dans le répertoire des modules d&rsquo;apache. S&rsquo;ils sont présent, nous n&rsquo;avons qu&rsquo;un peu de configuration à  faire.</p>
-
 <p>Dans le répertoire conf.d, il faut créé (ou modifier) le fichier mod_deflate.conf pour y inclure le contenu suivant:</p>
-
 <pre><code>&lt;Location /&gt;
 # Ajoute un filtre
 SetOutputFilter DEFLATE
@@ -124,12 +118,9 @@ SetEnvIfNoCase Request_URI \
 Header append Vary User-Agent env=!dont-vary
 &lt;/Location&gt;
 </code></pre>
-
-<p>Ensuite, il ne reste plus qu&rsquo;à  ajouter la ligne:</p>
-
+<p>Ensuite, il ne reste plus qu'à  ajouter la ligne:</p>
 <pre><code>SetOutputFilter DEFLATE
 </code></pre>
-
 <p>dans chacuns des vhosts où l&rsquo;on veut activer la compression des pages.</p>
 <ul class="pa0">
   
@@ -155,7 +146,7 @@ Header append Vary User-Agent env=!dont-vary
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 

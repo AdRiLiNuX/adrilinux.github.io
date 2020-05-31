@@ -17,26 +17,17 @@
       
       <guid>https://www.reslinger.net/2015/07/windows-en-dual-boot/</guid>
       <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-
 &lt;p&gt;J&amp;rsquo;utilise Linux la majeur partie de mon temps. Sur quelques machines, je suis en dual boot. Et par chez nous, nous changeons régulièrement d&amp;rsquo;heure pour suivre le soleil. Et avoir les deux systèmes qui mettent à jour la même horloge, et bien c&amp;rsquo;est la galère. Pour éviter les ennuies, je configure le BIOS de mes machines en UTC, et ce depuis des années. Je profite donc de ce billet pour donner les commandes windows à exécuter dans un terminal administrateur pour que Windows 10 calcule comme un grand son horloge local à partir d&amp;rsquo;une horloge BIOS en UTC.&lt;/p&gt;
-
 &lt;p&gt;Voici les différentes étapes :&lt;/p&gt;
-
 &lt;p&gt;Configuration de la base de regisre pour avoir l&amp;rsquo;heure bios en utc :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;reg ADD HKLM\System\CurrentControlSet\Control\TimeZoneInformation /t REG_DWORD /v RealTimeIsUniversal /d 1
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Synchroniser l&amp;rsquo;heure :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;w32tm /config /update
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Désactiver le service Windows Time service qui écrit l&amp;rsquo;heure à chaque arrêt du système sans regarder le registre :&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;sc config w32time start= disabled
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Éventuellement, on peut installer un service ntp. Personnellement, mes sessions Windows ne sont plus assez longues depus bien longtemps pour avoir suffi des désagréments.&lt;/p&gt;
 </description>
     </item>
@@ -48,11 +39,8 @@
       
       <guid>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</guid>
       <description>&lt;p&gt;Bonjour tout le monde.&lt;/p&gt;
-
-&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&amp;rsquo;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
-
+&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&#39;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
 &lt;p&gt;Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans &amp;ldquo;HKEY_LOCAL_MACHINE\Software\BrowserChoice&amp;rdquo; du nom de &amp;ldquo;Enable&amp;rdquo;. Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.&lt;/p&gt;
-
 &lt;p&gt;Ensuite, la machine démarre plus vite 🙂&lt;/p&gt;
 </description>
     </item>
@@ -64,17 +52,12 @@
       
       <guid>https://www.reslinger.net/2014/07/putty-et-les-tunnels-imbriqu%C3%A9s/</guid>
       <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-
 &lt;p&gt;Pour ceux qui n&amp;rsquo;ont pas toujours le choix de leurs outils, il faut arriver à retrouver ses habitudes avec les outils fournis.&lt;/p&gt;
-
 &lt;p&gt;Dans mon cas, j&amp;rsquo;utilise Linux au quotidien, et au travail je suis souvent avec un poste sous Windows. Le système étant radicalement différent, les outils le sont aussi. Avec openssh, il est facile de modifier sont fichier ~/.ssh/config pour créer des connexions ssh  avec rebond de manière transparente. Avec Putty, c&amp;rsquo;est un peu plus délicat, mais une fois que l&amp;rsquo;on a la méthode, ça roule.&lt;/p&gt;
-
 &lt;p&gt;La méthode, c&amp;rsquo;est de définir l&amp;rsquo;hôte intermédiaire dans la page proxy avec les informations qui vont bien. Pour &amp;ldquo;proxy command&amp;rdquo;, un copie/colle de ce qui suit devrait suffir:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;plink -P %proxyport -pw %pass %user@%proxyhost -C -X -nc %host:%port\n
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;Putty_confproxy.png&#34; alt=&#34;Putty_confproxy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Putty_confproxy.png&#34; alt=&#34;Putty_confproxy&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     

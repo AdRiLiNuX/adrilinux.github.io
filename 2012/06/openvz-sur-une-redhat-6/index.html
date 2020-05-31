@@ -6,7 +6,7 @@
     
     <title>AdRiLiNuX&#39;s web site  | OpenVZ sur une RedHat 6</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="generator" content="Hugo 0.67.1" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,16 +35,13 @@ Aujourd&rsquo;hui, je vous propose de mettre en place un système de virtualisat
 <meta itemprop="name" content="OpenVZ sur une RedHat 6">
 <meta itemprop="description" content="Bonjour tout le monde,
 Aujourd&rsquo;hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s&rsquo;agit pas exactement de virtualisation mais plutôt de conteneur. L&rsquo;avantage, c&rsquo;est que ça fonctionne sur des machines qui n&rsquo;ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu&rsquo;est un conteneur (dans ce contexte), je vais faire un petit rappel.">
-
-
 <meta itemprop="datePublished" content="2012-06-28T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2012-06-28T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="359">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenVZ sur une RedHat 6"/>
 <meta name="twitter:description" content="Bonjour tout le monde,
 Aujourd&rsquo;hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s&rsquo;agit pas exactement de virtualisation mais plutôt de conteneur. L&rsquo;avantage, c&rsquo;est que ça fonctionne sur des machines qui n&rsquo;ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu&rsquo;est un conteneur (dans ce contexte), je vais faire un petit rappel."/>
@@ -107,32 +104,20 @@ Aujourd&rsquo;hui, je vous propose de mettre en place un système de virtualisat
     </header>
 
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Bonjour tout le monde,</p>
-
 <p>Aujourd&rsquo;hui, je vous propose de mettre en place un système de virtualisation utilisable sur tout type de matériel. En fait, dans notre cas du jour, il ne s&rsquo;agit pas exactement de virtualisation mais plutôt de conteneur. L&rsquo;avantage, c&rsquo;est que ça fonctionne sur des machines qui n&rsquo;ont pas forcément les instructions de virtualisation matériel. Pour ceux qui ne savent pas ce qu&rsquo;est un conteneur (dans ce contexte), je vais faire un petit rappel.</p>
-
-<p>Le conteneur permet de faire des machines virtuelles, mais celles ci n&rsquo;auront pas un espace complet réservé comme sur d&rsquo;autre système de virtualisation car pour le système hôte et les invités, il s&rsquo;agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d&rsquo;étape entre l&rsquo;application d&rsquo;une machine virtuelle et le matériel (disque, mémoire, cpu, &hellip;). En contre parti, comme on a qu&rsquo;un seul noyau, les invités sont donc du même type que l&rsquo;hôte (Linux &ndash; Linux, Windows &ndash; Windows).</p>
-
+<p>Le conteneur permet de faire des machines virtuelles, mais celles ci n&rsquo;auront pas un espace complet réservé comme sur d&rsquo;autre système de virtualisation car pour le système hôte et les invités, il s&rsquo;agit du même noyau. Cela implique donc différente chose, à commencer par des performance élevée car il y a moins d'étape entre l&rsquo;application d&rsquo;une machine virtuelle et le matériel (disque, mémoire, cpu, &hellip;). En contre parti, comme on a qu&rsquo;un seul noyau, les invités sont donc du même type que l&rsquo;hôte (Linux &ndash; Linux, Windows &ndash; Windows).</p>
 <p>Ici, nous ne verrons que la parti Linux. Le projet que nous allons utiliser s’appelle OpenVZ. Bien sûr, il y en a d&rsquo;autre qui existe.</p>
-
 <p>Nôtre système hôte sera un clone d&rsquo;une RedHat 6 (Scientific Linux 6).</p>
-
 <p>L&rsquo;installation sur ce genre de système est vraiment très simple.</p>
-
 <p>Récupérez en premier la définition du dépôt :</p>
-
 <pre><code>cd /etc/yum.repos.d &amp;&amp; wget http://download.openvz.org/openvz.repo &amp;&amp; \
 rpm --import http://download.openvz.org/RPM-GPG-Key-OpenVZ
 </code></pre>
-
 <p>Ensuite, modifier le fichier openvz.repo pour désactiver le dépot redhat 5 et activer celui de la redhat 6.</p>
-
 <p>Enfin, installez le kernel:</p>
-
 <pre><code>yum install vzkernel-firmware vzkernel vzctl vzquota
 </code></pre>
-
 <p>Pour que OpenVZ soit fonctionnel, il reste juste un peu de configuration. Désactiver SELinux (/etc/selinux/config) et mettez dans le fichier /etc/sysctl.conf ce qui suit:</p>
-
 <pre><code># On Hardware Node we generally need  
 # packet forwarding enabled and proxy arp disabled  
 net.ipv4.ip_forward = 1  
@@ -150,7 +135,6 @@ kernel.sysrq = 1
 net.ipv4.conf.default.send_redirects = 1  
 net.ipv4.conf.all.send_redirects = 0
 </code></pre>
-
 <p>Après un redémarrage sur le nouveau noyau, vous voilà prêt à créer et démarrer vos machines virtuelles.</p>
 <ul class="pa0">
   
@@ -176,7 +160,7 @@ net.ipv4.conf.all.send_redirects = 0
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://www.reslinger.net/" >
-    &copy; 2019 AdRiLiNuX&#39;s web site
+    &copy; 2020 AdRiLiNuX&#39;s web site
   </a>
     <div>
 
