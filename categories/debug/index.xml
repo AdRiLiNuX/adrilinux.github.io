@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>debug on AdRiLiNuX's web site</title><link>https://www.reslinger.net/categories/debug/</link><description>Recent content in debug on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Fri, 21 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/categories/debug/index.xml" rel="self" type="application/rss+xml"/><item><title>Mode rescue OVH</title><link>https://www.reslinger.net/2020/08/mode-rescue-ovh/</link><pubDate>Fri, 21 Aug 2020 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2020/08/mode-rescue-ovh/</guid><description>&lt;p>Pour des raisons de coût; mon infra repose sur de petits serveurs dédiés à prix promotionnel. J&amp;rsquo;en ai actuellement un chez SoYouStart, mais ce qui suis est également valable pour des serveurs dédiés chez OVH (ainsi que Kimsufi).
+Une des particularités des serveurs dédiés pas cher, c&amp;rsquo;est qu&amp;rsquo;il n&amp;rsquo;y a pas systématiquement de carte d&amp;rsquo;accès à distance type Ilo ou Drac. Chez OVH, nous avons un système de rescue qui peut nous aider lorsque le serveur à un sérieux problème.&lt;/p>
+&lt;p>Lors d&amp;rsquo;un simple reboot, j&amp;rsquo;ai perdu la main sur mon serveur, j&amp;rsquo;ai donc lancer le mode rescue.
+Une fois ce mode démarrer, on peut se connecter sur un système temporaire basé sur Debian en SSH pour essayer de comprendre ce qui ne va pas.
+Petite parenthèse, un service web tourne sur le port 81 du système et permet de faire quelques test matériel. Les identifiants sont les même qu&amp;rsquo;avec SSH (utilisateur root, mot de passe reçu par mail).&lt;/p>
+&lt;p>Le billet du jour à pour propos de traiter la collecte d&amp;rsquo;informations pour le déboguage de la séquence de boot.&lt;/p>
+&lt;p>Mon système fonctionnait parfaitement avant que je le relance, le problème est lié à la séquence de boot et non à une panne matériel. Depuis la console SSH du mode rescue, j&amp;rsquo;installe donc le nécessaire pour voir la séquence de boot. Le nécessaire est la virtualisation. C&amp;rsquo;est parti.&lt;/p>
+&lt;p>Par habitude, je commence par mettre le système à jour&lt;/p>
+&lt;pre>&lt;code>apt update; apt upgrade -y
+&lt;/code>&lt;/pre>
+&lt;p>Je désactive le RAID disque de mes disques pour évité d&amp;rsquo;avoir 2 systèmes qui accèdent aux mêmes données&lt;/p>
+&lt;pre>&lt;code>mdadm --manage --stop /dev/md127
+&lt;/code>&lt;/pre>
+&lt;p>Ensuite j&amp;rsquo;installe le nécessaire pour lancer mon système dans une machine virtuelle&lt;/p>
+&lt;pre>&lt;code>apt install qemu-kvm libvirt-bin ovmf virtinst -y
+&lt;/code>&lt;/pre>
+&lt;p>Et je lance la virtualisation de mon système&lt;/p>
+&lt;pre>&lt;code>systemctl start libvirtd
+virsh net-start default
+virt-install --name rescue --hvm --vcpus=4 --ram 8192 --machine q35 --disk path=/dev/sda,bus=virtio,format=raw --disk path=/dev/sdb,bus=virtio,format=raw --disk path=/dev/sdc,bus=virtio,format=raw --disk path=/dev/sdd,bus=virtio,format=raw --network network:default,model=virtio --graphics spice --video qxl --channel spicevmc --rng /dev/random --noautoconsole --console pty,target_type=serial --os-type=linux --os-variant=rhel7 --import
+&lt;/code>&lt;/pre>
+&lt;p>Si la configuration de votre grub permet le contrôle depuis le port série, vous pouvez y accéder directement &lt;a href="https://www.reslinger.net/2014/12/console-virsh/">depuis la console&lt;/a>. Autrement, installez les paquets suivant&lt;/p>
+&lt;pre>&lt;code>apt install virt-manager xauth
+&lt;/code>&lt;/pre>
+&lt;p>Après vous être reloggué, vous pourrez lancer virt-manager et avoir accès à la console et voir enfin pourquoi votre système ne démarre plus.&lt;/p></description></item></channel></rss>

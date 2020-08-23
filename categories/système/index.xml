@@ -1,68 +1,55 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>système on AdRiLiNuX&#39;s web site</title>
-    <link>https://www.reslinger.net/categories/syst%C3%A8me/</link>
-    <description>Recent content in système on AdRiLiNuX&#39;s web site</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>fr-fr</language>
-    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
-    
-        <atom:link href="https://www.reslinger.net/categories/syst%C3%A8me/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Chiffrer son homedir sous Ubuntu</title>
-      <link>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</link>
-      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</guid>
-      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-&lt;p&gt;J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c&#39;était suffisant.
-La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&amp;rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).&lt;/p&gt;
-&lt;p&gt;Pour l&amp;rsquo;installation des paquets :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apt install ecryptfs-utils libpam-mount
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pour l&amp;rsquo;encryption du homedir :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u $MON_USER
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ecryptfs-migrate-home -u mon_user
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;L&amp;rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .&lt;/p&gt;
-&lt;p&gt;Source utilisée: &lt;a href=&#34;https://doc.ubuntu-fr.org/ecryptfs&#34;&gt;ecryptfs sur ubuntu-fr&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Console virsh</title>
-      <link>https://www.reslinger.net/2014/12/console-virsh/</link>
-      <pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.reslinger.net/2014/12/console-virsh/</guid>
-      <description>&lt;p&gt;Bonjour,&lt;/p&gt;
-&lt;p&gt;Aujourd&amp;rsquo;hui, rien de passionnant, juste un petit mémo pour l&amp;rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.&lt;/p&gt;
-&lt;p&gt;Pour entrer :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;virsh console VM
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pour sortir&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Ctrl + ]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Désactiver le choix du navigateur</title>
-      <link>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</link>
-      <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</guid>
-      <description>&lt;p&gt;Bonjour tout le monde.&lt;/p&gt;
-&lt;p&gt;Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu&#39;à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p&gt;
-&lt;p&gt;Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans &amp;ldquo;HKEY_LOCAL_MACHINE\Software\BrowserChoice&amp;rdquo; du nom de &amp;ldquo;Enable&amp;rdquo;. Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.&lt;/p&gt;
-&lt;p&gt;Ensuite, la machine démarre plus vite 🙂&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>système on AdRiLiNuX's web site</title><link>https://www.reslinger.net/categories/syst%C3%A8me/</link><description>Recent content in système on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Fri, 21 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/categories/syst%C3%A8me/index.xml" rel="self" type="application/rss+xml"/><item><title>Mode rescue OVH</title><link>https://www.reslinger.net/2020/08/mode-rescue-ovh/</link><pubDate>Fri, 21 Aug 2020 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2020/08/mode-rescue-ovh/</guid><description>&lt;p>Pour des raisons de coût; mon infra repose sur de petits serveurs dédiés à prix promotionnel. J&amp;rsquo;en ai actuellement un chez SoYouStart, mais ce qui suis est également valable pour des serveurs dédiés chez OVH (ainsi que Kimsufi).
+Une des particularités des serveurs dédiés pas cher, c&amp;rsquo;est qu&amp;rsquo;il n&amp;rsquo;y a pas systématiquement de carte d&amp;rsquo;accès à distance type Ilo ou Drac. Chez OVH, nous avons un système de rescue qui peut nous aider lorsque le serveur à un sérieux problème.&lt;/p>
+&lt;p>Lors d&amp;rsquo;un simple reboot, j&amp;rsquo;ai perdu la main sur mon serveur, j&amp;rsquo;ai donc lancer le mode rescue.
+Une fois ce mode démarrer, on peut se connecter sur un système temporaire basé sur Debian en SSH pour essayer de comprendre ce qui ne va pas.
+Petite parenthèse, un service web tourne sur le port 81 du système et permet de faire quelques test matériel. Les identifiants sont les même qu&amp;rsquo;avec SSH (utilisateur root, mot de passe reçu par mail).&lt;/p>
+&lt;p>Le billet du jour à pour propos de traiter la collecte d&amp;rsquo;informations pour le déboguage de la séquence de boot.&lt;/p>
+&lt;p>Mon système fonctionnait parfaitement avant que je le relance, le problème est lié à la séquence de boot et non à une panne matériel. Depuis la console SSH du mode rescue, j&amp;rsquo;installe donc le nécessaire pour voir la séquence de boot. Le nécessaire est la virtualisation. C&amp;rsquo;est parti.&lt;/p>
+&lt;p>Par habitude, je commence par mettre le système à jour&lt;/p>
+&lt;pre>&lt;code>apt update; apt upgrade -y
+&lt;/code>&lt;/pre>
+&lt;p>Je désactive le RAID disque de mes disques pour évité d&amp;rsquo;avoir 2 systèmes qui accèdent aux mêmes données&lt;/p>
+&lt;pre>&lt;code>mdadm --manage --stop /dev/md127
+&lt;/code>&lt;/pre>
+&lt;p>Ensuite j&amp;rsquo;installe le nécessaire pour lancer mon système dans une machine virtuelle&lt;/p>
+&lt;pre>&lt;code>apt install qemu-kvm libvirt-bin ovmf virtinst -y
+&lt;/code>&lt;/pre>
+&lt;p>Et je lance la virtualisation de mon système&lt;/p>
+&lt;pre>&lt;code>systemctl start libvirtd
+virsh net-start default
+virt-install --name rescue --hvm --vcpus=4 --ram 8192 --machine q35 --disk path=/dev/sda,bus=virtio,format=raw --disk path=/dev/sdb,bus=virtio,format=raw --disk path=/dev/sdc,bus=virtio,format=raw --disk path=/dev/sdd,bus=virtio,format=raw --network network:default,model=virtio --graphics spice --video qxl --channel spicevmc --rng /dev/random --noautoconsole --console pty,target_type=serial --os-type=linux --os-variant=rhel7 --import
+&lt;/code>&lt;/pre>
+&lt;p>Si la configuration de votre grub permet le contrôle depuis le port série, vous pouvez y accéder directement &lt;a href="https://www.reslinger.net/2014/12/console-virsh/">depuis la console&lt;/a>. Autrement, installez les paquets suivant&lt;/p>
+&lt;pre>&lt;code>apt install virt-manager xauth
+&lt;/code>&lt;/pre>
+&lt;p>Après vous être reloggué, vous pourrez lancer virt-manager et avoir accès à la console et voir enfin pourquoi votre système ne démarre plus.&lt;/p></description></item><item><title>Copie d'image Docker</title><link>https://www.reslinger.net/2020/07/copie-dimage-docker/</link><pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2020/07/copie-dimage-docker/</guid><description>&lt;p>Petit tips Docker pour copier une image d&amp;rsquo;un registre à un autre.&lt;/p>
+&lt;p>De temps en temps on a besoin de sortir une image docker d&amp;rsquo;un registre privé dans un autre registre (privé ou publique). Bien que les commande pull et push sont généralement connue, la commande manquant est un retag. L&amp;rsquo;opération globale donne donc ceci:&lt;/p>
+&lt;pre>&lt;code>docker image pull ancien-registre/application:tag
+docker tag ancien-registre/application:tag nouveau-registre/application:tag
+docker push nouveau-registre/application:tag
+&lt;/code>&lt;/pre>
+&lt;p>Source: &lt;a href="https://stackoverflow.com/questions/49976188/copy-docker-image-between-repositories">stackoverflow&lt;/a>&lt;/p></description></item><item><title>Chiffrer son homedir sous Ubuntu</title><link>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</link><pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2018/02/chiffrer-son-homedir-sous-ubuntu/</guid><description>&lt;p>Bonjour,&lt;/p>
+&lt;p>J&amp;rsquo;avais sous la main une machine sous Ubuntu Xenial (16.04 LTS) où je voulais activer le chiffrage du homedir car je ne l&amp;rsquo;avais pas fait durant l&amp;rsquo;installation du système. Pourquoi ? Simplement par ce que j&amp;rsquo;installe des systèmes sur disque chiffré. Je pensais alors que c'était suffisant.
+La machine que j&amp;rsquo;ai voulu modifier est en fait une machine potentiellement partagée aujourd&amp;rsquo;hui, les besoins ont donc changés. Voyons tout de suite comment effectuer ces manipulations (après avoir fait une sauvegarde du homedir, il en va sans dire).&lt;/p>
+&lt;p>Pour l&amp;rsquo;installation des paquets :&lt;/p>
+&lt;pre>&lt;code>apt install ecryptfs-utils libpam-mount
+&lt;/code>&lt;/pre>
+&lt;p>Pour l&amp;rsquo;encryption du homedir :&lt;/p>
+&lt;pre>&lt;code>ecryptfs-migrate-home -u $MON_USER
+&lt;/code>&lt;/pre>
+&lt;p>Enfin, sans redémarrer la machine, il est recommandé de se connecter tout de suite à sa session pour vérifier le bon déroulé et y taper la commande suivante pour avoir le passe de récupération :&lt;/p>
+&lt;pre>&lt;code>ecryptfs-migrate-home -u mon_user
+&lt;/code>&lt;/pre>
+&lt;p>L&amp;rsquo;opération de chiffrement étant validée, vous pourez supprimer le répertoire de sauvegarde réalisé dans le répertoire /home .&lt;/p>
+&lt;p>Source utilisée: &lt;a href="https://doc.ubuntu-fr.org/ecryptfs">ecryptfs sur ubuntu-fr&lt;/a>&lt;/p></description></item><item><title>Console virsh</title><link>https://www.reslinger.net/2014/12/console-virsh/</link><pubDate>Wed, 03 Dec 2014 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2014/12/console-virsh/</guid><description>&lt;p>Bonjour,&lt;/p>
+&lt;p>Aujourd&amp;rsquo;hui, rien de passionnant, juste un petit mémo pour l&amp;rsquo;entrer dans une machine virtuelle pilotée par libvirt, mais surtout le raccourcis pour en ressortir.&lt;/p>
+&lt;p>Pour entrer :&lt;/p>
+&lt;pre>&lt;code>virsh console VM
+&lt;/code>&lt;/pre>
+&lt;p>Pour sortir&lt;/p>
+&lt;pre>&lt;code>Ctrl + ]
+&lt;/code>&lt;/pre>
+&lt;p>Bien sur, il faut que le système invité soit configuré pour avoir une console sur le port série.&lt;/p></description></item><item><title>Désactiver le choix du navigateur</title><link>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</link><pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2014/08/d%C3%A9sactiver-le-choix-du-navigateur/</guid><description>&lt;p>Bonjour tout le monde.&lt;/p>
+&lt;p>Si vous êtes comme moi à installer un Windows de temps en temps , alors vous avez dû aussi remarquer qu'à un moment donné une boite de dialogue apparaît demandant de choisir son navigateur. Sur une machine d&amp;rsquo;administration qui ne démarre qu&amp;rsquo;une fois par an, installer un autre navigateur qui sera de toute façon obsolète au démarrage suivant n&amp;rsquo;est pas forcément judicieux. La problématique qui se pose alors est de désactiver cette fameuse boite de dialogue.&lt;/p>
+&lt;p>Pour de faire, il faut ajouter via un éditeur de base de registre, un Nouveau DWORD dans &amp;ldquo;HKEY_LOCAL_MACHINE\Software\BrowserChoice&amp;rdquo; du nom de &amp;ldquo;Enable&amp;rdquo;. Sa valeur sera 0 pour le désactiver, 1 pour le réactiver.&lt;/p>
+&lt;p>Ensuite, la machine démarre plus vite 🙂&lt;/p></description></item></channel></rss>

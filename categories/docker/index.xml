@@ -1,0 +1,7 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on AdRiLiNuX's web site</title><link>https://www.reslinger.net/categories/docker/</link><description>Recent content in docker on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Wed, 01 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Copie d'image Docker</title><link>https://www.reslinger.net/2020/07/copie-dimage-docker/</link><pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2020/07/copie-dimage-docker/</guid><description>&lt;p>Petit tips Docker pour copier une image d&amp;rsquo;un registre à un autre.&lt;/p>
+&lt;p>De temps en temps on a besoin de sortir une image docker d&amp;rsquo;un registre privé dans un autre registre (privé ou publique). Bien que les commande pull et push sont généralement connue, la commande manquant est un retag. L&amp;rsquo;opération globale donne donc ceci:&lt;/p>
+&lt;pre>&lt;code>docker image pull ancien-registre/application:tag
+docker tag ancien-registre/application:tag nouveau-registre/application:tag
+docker push nouveau-registre/application:tag
+&lt;/code>&lt;/pre>
+&lt;p>Source: &lt;a href="https://stackoverflow.com/questions/49976188/copy-docker-image-between-repositories">stackoverflow&lt;/a>&lt;/p></description></item></channel></rss>
