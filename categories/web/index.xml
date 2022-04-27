@@ -10,7 +10,7 @@
 &lt;p>&lt;img src="Github-ssh.png" alt="Ajout d&amp;rsquo;une clé dans un projet Github">&lt;/p>
 &lt;p>Le contenu de la clé privée sera, lui, utilisé comme variable dans l&amp;rsquo;intégration et livraison continue du projet Gitlab au coté de l&amp;rsquo;email et du login :&lt;/p>
 &lt;p>&lt;img src="Gitlab-CI-Variable.png" alt="Ajout de la clé privée dans un projet Gitlab">&lt;/p>
-&lt;p>Maintenant il ne reste plus qu'à rajouter quelques lignes dans la section script du fichier .gitlab-ci.yml pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
+&lt;p>Maintenant il ne reste plus qu&amp;rsquo;à rajouter quelques lignes dans la section script du fichier .gitlab-ci.yml pour récupérer le dépôt depuis Github, nétoyer le répertoire et pushé le tout un fois le build fait.
 Cela nous donne quelque chose comme ceci:&lt;/p>
 &lt;pre>&lt;code>pages:
 script:
@@ -26,4 +26,4 @@ paths:
 only:
 - master
 &lt;/code>&lt;/pre>
-&lt;p>Edit: La synchronisation fonctionne bien et restera en l'état pour le moment, github gère son certificat let&amp;rsquo;s encrypt lui même, ce qui ne permet pas de faire du loadbalancing pour le moment.&lt;/p></description></item></channel></rss>
+&lt;p>Edit: La synchronisation fonctionne bien et restera en l&amp;rsquo;état pour le moment, github gère son certificat let&amp;rsquo;s encrypt lui même, ce qui ne permet pas de faire du loadbalancing pour le moment.&lt;/p></description></item></channel></rss>

@@ -52,7 +52,7 @@ SetEnvIfNoCase Request_URI \
 Header append Vary User-Agent env=!dont-vary
 &amp;lt;/Location&amp;gt;
 &lt;/code>&lt;/pre>
-&lt;p>Ensuite, il ne reste plus qu'à  ajouter la ligne:&lt;/p>
+&lt;p>Ensuite, il ne reste plus qu&amp;rsquo;à  ajouter la ligne:&lt;/p>
 &lt;pre>&lt;code>SetOutputFilter DEFLATE
 &lt;/code>&lt;/pre>
 &lt;p>dans chacuns des vhosts où l&amp;rsquo;on veut activer la compression des pages.&lt;/p></description></item></channel></rss>

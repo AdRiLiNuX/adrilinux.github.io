@@ -40,7 +40,7 @@ SetEnvIfNoCase Request_URI \
 Header append Vary User-Agent env=!dont-vary
 &amp;lt;/Location&amp;gt;
 &lt;/code>&lt;/pre>
-&lt;p>Ensuite, il ne reste plus qu'à  ajouter la ligne:&lt;/p>
+&lt;p>Ensuite, il ne reste plus qu&amp;rsquo;à  ajouter la ligne:&lt;/p>
 &lt;pre>&lt;code>SetOutputFilter DEFLATE
 &lt;/code>&lt;/pre>
 &lt;p>dans chacuns des vhosts où l&amp;rsquo;on veut activer la compression des pages.&lt;/p></description></item><item><title>exemple de conf apache + mod_proxy + awstat</title><link>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</link><pubDate>Tue, 14 Dec 2010 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2010/12/exemple-de-conf-apache-mod_proxy-awstat/</guid><description>&lt;pre>&lt;code>RedirectTemp /statistiques/index.html http://www.site.net/awstats/awstats.pl?config=www.site.net
