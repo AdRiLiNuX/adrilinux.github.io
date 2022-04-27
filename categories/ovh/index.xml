@@ -1,0 +1,29 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ovh on AdRiLiNuX's web site</title><link>https://www.reslinger.net/categories/ovh/</link><description>Recent content in ovh on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Mon, 19 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/categories/ovh/index.xml" rel="self" type="application/rss+xml"/><item><title>DNSSEC avec Cloudflare et registrar OVH</title><link>https://www.reslinger.net/2021/07/dnssec-avec-cloudflare-et-registrar-ovh/</link><pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2021/07/dnssec-avec-cloudflare-et-registrar-ovh/</guid><description>&lt;p>Petit aide mémoire aujourd&amp;rsquo;hui sur la configuration du DNSSEC quand on a ses serveurs DNS chez Cloudflare et que le domaine est chez OVH.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>OVH&lt;/th>
+&lt;th>Cloudflare&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Key tag&lt;/td>
+&lt;td>Balise clé&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Flag&lt;/td>
+&lt;td>Indicateurs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Algorithme&lt;/td>
+&lt;td>Algorithme&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Clé publique&lt;/td>
+&lt;td>Clé publique&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Ce qui donne quelque chose comme ce qui suit chez OVH&lt;/p>
+&lt;p>&lt;img src="ds-ovh.png" alt="DS OVH">&lt;/p></description></item></channel></rss>

@@ -1,4 +1,32 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on AdRiLiNuX's web site</title><link>https://www.reslinger.net/posts/</link><description>Recent content in Posts on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Backup Bluetooth</title><link>https://www.reslinger.net/2021/02/backup-bluetooth/</link><pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2021/02/backup-bluetooth/</guid><description>&lt;p>J&amp;rsquo;ai réinstallé mon ordi il y a quelques temps maintenant, et une chose que je ne voulais pas faire était de devoir ré-appairer tous mes périphériques bluetooth. J&amp;rsquo;ai donc fait quelques rechercher et j&amp;rsquo;ai trouvé ma réponse sur (superuser.com)[https://superuser.com/questions/406098/retrieve-paired-bluetooth-devices-from-console/406633].
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on AdRiLiNuX's web site</title><link>https://www.reslinger.net/posts/</link><description>Recent content in Posts on AdRiLiNuX's web site</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><lastBuildDate>Mon, 19 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.reslinger.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>DNSSEC avec Cloudflare et registrar OVH</title><link>https://www.reslinger.net/2021/07/dnssec-avec-cloudflare-et-registrar-ovh/</link><pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2021/07/dnssec-avec-cloudflare-et-registrar-ovh/</guid><description>&lt;p>Petit aide mémoire aujourd&amp;rsquo;hui sur la configuration du DNSSEC quand on a ses serveurs DNS chez Cloudflare et que le domaine est chez OVH.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>OVH&lt;/th>
+&lt;th>Cloudflare&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Key tag&lt;/td>
+&lt;td>Balise clé&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Flag&lt;/td>
+&lt;td>Indicateurs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Algorithme&lt;/td>
+&lt;td>Algorithme&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Clé publique&lt;/td>
+&lt;td>Clé publique&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Ce qui donne quelque chose comme ce qui suit chez OVH&lt;/p>
+&lt;p>&lt;img src="ds-ovh.png" alt="DS OVH">&lt;/p></description></item><item><title>Backup Bluetooth</title><link>https://www.reslinger.net/2021/02/backup-bluetooth/</link><pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2021/02/backup-bluetooth/</guid><description>&lt;p>J&amp;rsquo;ai réinstallé mon ordi il y a quelques temps maintenant, et une chose que je ne voulais pas faire était de devoir ré-appairer tous mes périphériques bluetooth. J&amp;rsquo;ai donc fait quelques rechercher et j&amp;rsquo;ai trouvé ma réponse sur (superuser.com)[https://superuser.com/questions/406098/retrieve-paired-bluetooth-devices-from-console/406633].
 Dans le cas d&amp;rsquo;une CentOS et d&amp;rsquo;Ubuntu plus récente, les appairages sont sauvegardés dans le répertoire /var/lib/bluetooth/ . Le (ou les) répertoire(s) présent sont l&amp;rsquo;adresse MAC du périphérique bluetooth hôte. La sauvegarde peut simplement se faire via :&lt;/p>
 &lt;pre>&lt;code>tar -zcf bluetooth.tar.gz /var/lib/bluetooth
 &lt;/code>&lt;/pre></description></item><item><title>Mode rescue OVH</title><link>https://www.reslinger.net/2020/08/mode-rescue-ovh/</link><pubDate>Fri, 21 Aug 2020 00:00:00 +0000</pubDate><guid>https://www.reslinger.net/2020/08/mode-rescue-ovh/</guid><description>&lt;p>Pour des raisons de coût; mon infra repose sur de petits serveurs dédiés à prix promotionnel. J&amp;rsquo;en ai actuellement un chez SoYouStart, mais ce qui suis est également valable pour des serveurs dédiés chez OVH (ainsi que Kimsufi).
